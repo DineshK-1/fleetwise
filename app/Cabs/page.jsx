@@ -1,4 +1,3 @@
-import React from "react";
 import "./cabdeets.css";
 
 function CabCard({ reg, name, cabcolor }) {

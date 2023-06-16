@@ -1,31 +1,20 @@
 "use client"
 
 import { useState } from "react"
+import NavItem from "./nav-item.component";
 
-export default function Sidebar() {
+export default function Sidebar({ child }) {
 
     const [expanded, setExpanded] = useState(true);
 
     return (
-        <div className="sidebar">
-            <div className="logo">
-                <span className="material-icons-outlined">question_mark</span>
-            </div>
-
+        <div className="sidebar" style={{ width: expanded ? "175px" : "75px" }} onMouseEnter={() => setExpanded(true)} onMouseLeave={() => setExpanded(false)}>
             {/* Navigation Icons */}
             <div className="Navigation">
-                <div className="nav-item">
-                    <span className="material-icons-outlined">local_taxi</span>
-                </div>
-                <div className="nav-item">
-                    <span className="material-icons-outlined">person</span>
-                </div>
-                <div className="nav-item">
-                    <span className="material-icons-outlined">manage_accounts</span>
-                </div>
-                <div className="nav-item" onClick={() => setExpanded((e) => !e)}>
-                    <span className="material-icons-outlined" style={{ transform: expanded ? "rotate(90deg)" : "rotate(270deg)" }}>expand_more</span>
-                </div>
+                <NavItem text={"Fleet wise"} icon={"question_mark"} expanded={expanded} link={"/"} />
+                <NavItem text={"Cabs"} icon={"local_taxi"} expanded={expanded} link={"/Cabs"} />
+                <NavItem text={"Drivers"} icon={"person"} expanded={expanded} link={"/Drivers"} />
+                <NavItem text={"Management"} icon={"manage_accounts"} expanded={expanded} link={"/Mangement"} />
             </div>
         </div>
     )
