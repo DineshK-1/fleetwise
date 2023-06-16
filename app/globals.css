@@ -155,7 +155,7 @@ a {
   color: #222831;
 }
 
-.sidebar .Navigation .nav-item:hover {
+.nav-item.active {
   background-color: #00ADB5;
-  color: #222831;
+  color: #222831 !important;
 }

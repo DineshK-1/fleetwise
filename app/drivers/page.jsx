@@ -1,7 +1,7 @@
-export default function Home() {
+export default function DriversPage() {
     return (
-      <div className="home">
-        TESTTTT
+      <div className="Drivers">
+        Driver Page
       </div>
     )
   }
