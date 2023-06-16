@@ -5,7 +5,7 @@ import NavItem from "./nav-item.component";
 
 export default function Sidebar({ child }) {
 
-    const [expanded, setExpanded] = useState(true);
+    const [expanded, setExpanded] = useState(false);
 
     return (
         <div className="sidebar" style={{ width: expanded ? "175px" : "75px" }} onMouseEnter={() => setExpanded(true)} onMouseLeave={() => setExpanded(false)}>

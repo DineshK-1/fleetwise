@@ -3,10 +3,10 @@
   color: aliceblue;
   background-color: #404040;
   display: flex;
-  flex-direction: row;
-  padding: 2rem;
+  flex-direction: column;
   width: 70%;
   border-radius: 14px;
+  margin: 20px 0;
 }
 
 .cabcard h3 {
@@ -25,4 +25,26 @@ button {
 
 button :hover {
   background-color: #b1acac;
+}
+
+.cabs-page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0px;
+}
+
+.cabcard .top {
+  display: flex;
+  padding: 1.5rem;
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+  justify-content: flex-end;
+  color: white;
+  padding: 10px 15px;
 }
