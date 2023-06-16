@@ -81,3 +81,43 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: #222831;
+  width: fit-content;
+  height: 100vh;
+  align-items: center;
+  user-select: none;
+}
+
+.sidebar .Navigation {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .logo {
+  padding: .5rem;
+  cursor: pointer;
+  color: #00ADB5;
+}
+
+.sidebar .Navigation .nav-item {
+  margin: 1rem .75rem;
+  padding: .5rem;
+  cursor: pointer;
+  color: #00ADB5;
+  transition: all 500ms;
+  border-radius: 10px;
+}
+
+.sidebar .Navigation .nav-item:hover {
+  background-color: #00ADB5;
+  color: #222831;
+}
+
+.sidebar .Navigation .nav-item:hover {
+  background-color: #00ADB5;
+  color: #222831;
+}
