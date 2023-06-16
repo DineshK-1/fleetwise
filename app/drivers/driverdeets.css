@@ -1,22 +1,37 @@
 .driver-section {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 1rem 2rem;
   gap: .5rem;
+}
+
+.driver-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 .driver-card {
   display: flex;
   flex-direction: column;
 
-  margin: .5rem;
+  margin: .5rem 0;
   padding: 1rem;
 
-  background-color: #222831;
+  background-color: #212124;
   color: white;
   border-radius: 10px;
   gap: 10px;
+  user-select: none;
 
-  width: 400px;
+  cursor: pointer;
+
+  width: 450px;
+  transition: all 250ms;
+}
+
+.driver-card:hover {
+  transform: scale(1.02);
 }
 
 .driver-card .card-top {
@@ -33,11 +48,12 @@
   transition: all 250ms;
   padding: 5px;
   border-radius: 10px;
+  user-select: none;
+  cursor: pointer;
 }
 
 .action-buttons .edit-button:hover {
-  background-color: #00adb5;
-  color: #222831;
+  background-color: #161618;
 }
 
 .driver-card .card-top .left {
@@ -103,4 +119,38 @@
 
 .tag.since:hover {
   background-color: #D5CEA360;
+}
+
+.search-drivers{
+  display: flex;
+  gap: 20px;
+}
+
+.search{
+  outline: none;
+  padding: .7rem;
+  border-radius: 6px;
+  outline: 2px solid #212124;
+  background: transparent;
+  border: none;
+  color: white;
+  font-family: inherit;
+  font-size: 14px;
+  margin: 10px 0;
+
+  transition: all 250ms;
+}
+
+.search:focus{
+  outline: 2px solid #787879;
+
+  transition: all 250ms;
+}
+
+.name-search{
+  width: 40%;
+}
+
+.cab-search{
+  width: 15%;
 }
