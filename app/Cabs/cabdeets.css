@@ -42,6 +42,7 @@
   cursor: pointer;
   color: #222831;
   border-radius: 15px;
+  transition: background-color 200ms ease-in;
 }
 
 .revealcabcard .delete {
@@ -56,6 +57,7 @@
   cursor: pointer;
   color: #222831;
   border-radius: 15px;
+  transition: background-color 200ms ease-in;
 }
 
 .cabs-page {
