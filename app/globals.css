@@ -75,7 +75,17 @@ body {
   overflow-x: hidden;
 }
 
-body {}
+body::-webkit-scrollbar {
+  width: 0.35rem;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #1e1e24;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #00ADB5;
+}
 
 .main-wrapper {
   margin-left: 75px;
