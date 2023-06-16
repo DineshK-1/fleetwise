@@ -77,19 +77,29 @@ body {
 
 body {}
 
+.main-wrapper {
+  display: flex;
+  width: 100%;
+}
+
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.text.hide {
+  display: none;
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
   background-color: #222831;
-  width: fit-content;
   height: 100vh;
   align-items: center;
   user-select: none;
+  font-size: smaller;
+  transition: all 300ms ease;
 }
 
 .sidebar .Navigation {
@@ -98,18 +108,36 @@ a {
 }
 
 .sidebar .logo {
+  display: flex;
+  align-items: center;
   padding: .5rem;
   cursor: pointer;
   color: #00ADB5;
 }
 
+.expand {
+  display: flex;
+  align-items: center;
+  margin: 1rem .75rem;
+  padding: .5rem;
+  transition: all 500ms;
+  color: #00ADB5;
+  cursor: pointer;
+}
+
 .sidebar .Navigation .nav-item {
+  display: flex;
+  align-items: center;
   margin: 1rem .75rem;
   padding: .5rem;
   cursor: pointer;
   color: #00ADB5;
   transition: all 500ms;
   border-radius: 10px;
+}
+
+.sidebar .Navigation .nav-item .text {
+  padding-left: 5px;
 }
 
 .sidebar .Navigation .nav-item:hover {
