@@ -14,58 +14,10 @@ export default function DriverDetails() {
       id: "2127",
       email: "joe@hotmail.com",
       phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
+    }
   ];
   return (
-    <div className="drivers">
+    <div className="driver-section">
       {driverarray.map((driver) => {
         return (
           <DriverCard
