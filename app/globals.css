@@ -78,8 +78,7 @@ body {
 body {}
 
 .main-wrapper {
-  display: flex;
-  width: 100%;
+  margin-left: 75px;
 }
 
 a {
@@ -92,6 +91,7 @@ a {
 }
 
 .sidebar {
+  position: fixed;
   display: flex;
   flex-direction: column;
   background-color: #222831;
