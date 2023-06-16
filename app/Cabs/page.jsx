@@ -11,8 +11,12 @@ function CabCard({ reg, name, cabcolor }) {
         {name}
       </p>
       <div className="icons">
-        <span class="material-icons-outlined">info</span>
-        <span class="material-icons-outlined">more_vert</span>
+        <button>
+          <span class="material-icons-outlined">info</span>
+        </button>
+        <button>
+          <span class="material-icons-outlined">more_vert</span>
+        </button>
       </div>
     </div>
   );
@@ -26,12 +30,16 @@ export default function CabDetails() {
   return (
     <div>
       {array.map((cab) => (
-        <CabCard
-          key={cab.cabreg}
-          reg={cab.cabreg}
-          name={cab.cabname}
-          cabcolor={cab.cabcolor}
-        />
+        <>
+          <CabCard
+            key={cab.cabreg}
+            reg={cab.cabreg}
+            name={cab.cabname}
+            cabcolor={cab.cabcolor}
+          />
+          <br />
+          <br />
+        </>
       ))}
     </div>
   );
