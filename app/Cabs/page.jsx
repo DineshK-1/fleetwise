@@ -5,6 +5,12 @@ export default function CabDetails() {
   const array = [
     { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
     { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
+    { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
+    { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
+    { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
+    { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
+    { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
+    { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
   ];
   return (
     <div className="cabs-page">

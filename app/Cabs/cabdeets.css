@@ -80,13 +80,11 @@
   bottom: 20px;
   left: 52%;
   transform: translateX(-50%);
-  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #222831;
   color: #00adb5;
-  padding: 10px;
   background-color: transparent;
   flex-direction: row;
 }

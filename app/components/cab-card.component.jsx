@@ -36,7 +36,7 @@ export default function CabCard({ reg, name, color }) {
       <div className="addcabs">
         <button>
           <span class="material-icons-outlined">add</span>
-          <h2>ADD</h2>
+          <h2>ADD CAB</h2>
         </button>
       </div>
     </div>
