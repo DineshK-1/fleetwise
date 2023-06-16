@@ -18,17 +18,27 @@ export default function DriverDetails() {
   ];
   return (
     <div className="driver-section">
-      {driverarray.map((driver) => {
-        return (
-          <DriverCard
-            key={driver.id}
-            name={driver.name}
-            ID={driver.id}
-            email={driver.email}
-            phone={driver.phone}
-          />
-        );
-      })}
+      <h2 className="w-500">Drivers Management</h2>
+
+      <div className="search-drivers">
+        <input type="search" className="search name-search" placeholder="Enter a name to search" />
+        <input type="search" className="search" placeholder="Enter a ID to search" />
+        <input type="search" className="search cab-search" placeholder="Enter name of the cab" />
+      </div>
+
+      <div className="driver-cards">
+        {driverarray.map((driver) => {
+          return (
+            <DriverCard
+              key={driver.id}
+              name={driver.name}
+              ID={driver.id}
+              email={driver.email}
+              phone={driver.phone}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
