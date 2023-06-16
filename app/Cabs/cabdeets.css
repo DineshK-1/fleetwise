@@ -1,12 +1,16 @@
 .cabcard {
-  box-shadow: 3px 3px #000000;
-  color: aliceblue;
-  background-color: #404040;
+  box-shadow: 1.7px 1.8px 33.3px -23px rgba(0, 0, 0, 0.08),
+    5.8px 6px 111.7px -23px rgba(0, 0, 0, 0.048),
+    26px 27px 500px -23px rgba(0, 0, 0, 0.032);
+  color: #00adb5;
+  background-color: #222831;
   display: flex;
   flex-direction: column;
   width: 70%;
   border-radius: 14px;
   margin: 20px 0;
+  transition: all 200ms ease-in;
+  overflow: hidden;
 }
 
 .cabcard h3 {
@@ -18,13 +22,40 @@
   margin-left: 40px;
 }
 
-button {
-  border: 0;
-  background-color: #404040;
+.revealcabcard {
+  visibility: hidden;
+  transition: visibility 200ms ease-in;
 }
 
-button :hover {
-  background-color: #b1acac;
+.cabcard:hover .revealcabcard {
+  visibility: visible;
+}
+
+.revealcabcard .update {
+  display: flex;
+  flex-direction: row;
+  margin: 7px 2px;
+  padding: 2px;
+}
+.revealcabcard .update:hover {
+  background-color: #00adb5;
+  cursor: pointer;
+  color: #222831;
+  border-radius: 15px;
+}
+
+.revealcabcard .delete {
+  display: flex;
+  flex-direction: row;
+  margin: 12px 2px;
+  padding: 2px;
+}
+
+.revealcabcard .delete:hover {
+  background-color: #00adb5;
+  cursor: pointer;
+  color: #222831;
+  border-radius: 15px;
 }
 
 .cabs-page {
@@ -36,15 +67,58 @@ button :hover {
   margin: 10px 0px;
 }
 
-.cabcard .top {
+.cabcard .cabcardtop {
   display: flex;
   padding: 1.5rem;
   align-items: center;
 }
 
-.icons {
+.addcabs {
+  position: fixed;
+  bottom: 20px;
+  left: 52%;
+  transform: translateX(-50%);
+  width: 40%;
   display: flex;
-  justify-content: flex-end;
-  color: white;
-  padding: 10px 15px;
+  justify-content: center;
+  align-items: center;
+  background-color: #222831;
+  color: #00adb5;
+  padding: 10px;
+  background-color: transparent;
+  flex-direction: row;
+}
+
+.addcabs button {
+  background-color: #00adb5;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  height: 70px;
+  box-shadow: #686e76 2px 2px;
+  width: 200px;
+  transition: background-color 200ms ease-in, transform 200ms ease-in;
+}
+
+.addcabs button:hover {
+  background-color: #222831;
+  transform: scale(1.05);
+  color: #00adb5;
+}
+
+.addcabs button:active {
+  transform: scale(0.95);
+}
+
+.addcabs button span {
+  margin: auto;
+  justify-content: center;
+  margin: 2px 5px;
+}
+
+.addcabs button h2 {
+  margin: 2px 5px;
+  justify-content: center;
 }
