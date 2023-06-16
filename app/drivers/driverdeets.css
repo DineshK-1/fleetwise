@@ -1,4 +1,106 @@
-.card-column .card-row {
+.driver-section {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.driver-card {
+  display: flex;
+  flex-direction: column;
+
+  margin: .5rem;
+  padding: 1rem;
+
+  background-color: #222831;
+  color: white;
+  border-radius: 10px;
+  gap: 10px;
+
+  width: 400px;
+}
+
+.driver-card .card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.driver-card .card-top .action-buttons {
+  display: flex;
+}
+
+.action-buttons .edit-button {
+  transition: all 250ms;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.action-buttons .edit-button:hover {
+  background-color: #00adb5;
+  color: #222831;
+}
+
+.driver-card .card-top .left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.driver-card .card-top .left .details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.details .id {
+  font-size: small;
+}
+
+.tags {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.tag {
+  display: flex;
+  font-size: 12px;
+  padding: 5px 15px;
+  border-radius: 10px;
+  width: fit-content;
+  user-select: none;
+
+  transition: all 250ms;
+}
+
+.tag.cab {
+  border: 2px solid #0048b5;
+}
+
+.tag.cab:hover {
+  background-color: #0048b560;
+}
+
+.tag.email {
+  border: 2px solid #5400b5;
+}
+
+.tag.email:hover {
+  background-color: #5400b560;
+}
+
+.tag.phone {
+  border: 2px solid #E80F88;
+}
+
+.tag.phone:hover {
+  background-color: #E80F8860;
+}
+
+.tag.since {
+  border: 2px solid #D5CEA3;
+}
+
+.tag.since:hover {
+  background-color: #D5CEA360;
 }
