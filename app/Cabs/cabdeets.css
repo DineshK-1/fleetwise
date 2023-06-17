@@ -97,9 +97,8 @@
   justify-content: center;
   padding: 10px 20px;
   height: 70px;
-  box-shadow: #686e76 2px 2px;
   width: 200px;
-  transition: background-color 200ms ease-in, transform 200ms ease-in;
+  transition: background-color 200ms ease-in, transform 300ms ease-in;
 }
 
 .addcabs button:hover {
@@ -109,7 +108,7 @@
 }
 
 .addcabs button:active {
-  transform: scale(0.95);
+  transform: scale(0.98);
 }
 
 .addcabs button span {
