@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 export default function CabCard({ reg, name, color }) {
   const [expanded, setExpanded] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   return (
     <div
       className="cabcard"
@@ -34,11 +35,37 @@ export default function CabCard({ reg, name, color }) {
         <></>
       )}
       <div className="addcabs">
-        <button>
+        <button onClick={() => setShowModal(true)}>
           <span class="material-icons-outlined">add</span>
           <h2>ADD CAB</h2>
         </button>
       </div>
+      {showModal ? (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="modal-top">
+              <h3>ADD A CAB</h3>
+              <span
+                class="material-icons-outlined"
+                onClick={() => setShowModal(false)}
+              >
+                {" "}
+                close
+              </span>
+            </div>
+
+            <form onSubmit={""}>
+              <label>Cab Registration Number:</label>
+              <input type="text" />
+              <label>Cab Model:</label>
+              <input type="text" />
+              <button type="submit">ADD CAB</button>
+            </form>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
