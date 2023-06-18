@@ -6,6 +6,7 @@ import Image from "next/image";
 
 export default function DriverCard({ name, ID, email, phone }) {
   const [showModal, setShowModal] = useState(false);
+  const [showUpdate, setShowUpdate] = useState(false);
   return (
     <div>
       <div className="driver-card">
@@ -28,7 +29,14 @@ export default function DriverCard({ name, ID, email, phone }) {
           </div>
           <div className="action-buttons">
             <div className="edit-button">
-              <span class="material-icons-outlined">edit</span>
+              <span
+                class="material-icons-outlined"
+                onClick={() => {
+                  setShowUpdate(true);
+                }}
+              >
+                edit
+              </span>
             </div>
           </div>
         </div>
@@ -76,8 +84,44 @@ export default function DriverCard({ name, ID, email, phone }) {
               <input type="text" />
               <label>Assigned Vehicle:</label>
               <input type="text" />
+              <button type="submit">ADD DRIVER</button>
+            </form>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
+      {showUpdate ? (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="modal-top">
+              <h3>ALTER DRIVER DETAILS</h3>
+              <span
+                class="material-icons-outlined"
+                onClick={() => setShowUpdate(false)}
+              >
+                {" "}
+                close
+              </span>
+            </div>
 
-              <button type="submit">ADD CAB</button>
+            <form onSubmit={""}>
+              <label>Driver Name:</label>
+              <input type="text" />
+              <label>Driver ID:</label>
+              <input type="text" />
+              <label>Driver Email:</label>
+              <input type="text" />
+              <label>Driver Ph. Number:</label>
+              <input type="text" />
+              <label>Driving Since:</label>
+              <input type="text" />
+              <label>Assigned Vehicle:</label>
+              <input type="text" />
+              <div className="modal-bottom">
+                <button type="submit">UPDATE DRIVER</button>
+                <button onClick={""}>REMOVE DRIVER</button>
+              </div>
             </form>
           </div>
         </div>
