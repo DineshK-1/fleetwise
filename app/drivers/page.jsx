@@ -5,7 +5,13 @@ export default function DriverDetails() {
   const driverarray = [
     {
       name: "Joseph Mourinho",
-      id: "2127",
+      id: "2125",
+      email: "joe@hotmail.com",
+      phone: "1892192839",
+    },
+    {
+      name: "Joseph Mourinho",
+      id: "2126",
       email: "joe@hotmail.com",
       phone: "1892192839",
     },
@@ -17,56 +23,13 @@ export default function DriverDetails() {
     },
     {
       name: "Joseph Mourinho",
-      id: "2127",
+      id: "2128",
       email: "joe@hotmail.com",
       phone: "1892192839",
     },
     {
       name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    ,
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
+      id: "2129",
       email: "joe@hotmail.com",
       phone: "1892192839",
     },
