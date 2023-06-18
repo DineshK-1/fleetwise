@@ -141,6 +141,7 @@ a {
   font-size: small;
   transition: all 300ms ease;
   overflow: hidden;
+  z-index: 1;
 }
 
 .sidebar .Navigation {
