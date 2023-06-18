@@ -5,6 +5,7 @@ export default function CabCard({ reg, name, color }) {
   const [expanded, setExpanded] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showUpdate, setShowUpdate] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
   return (
     <div
       className="cabcard"
@@ -32,7 +33,13 @@ export default function CabCard({ reg, name, color }) {
             <span className="material-icons-outlined">info</span>
             <h3> Update Cab Info </h3>
           </div>
-          <div className="delete">
+          <div
+            className="delete"
+            onClick={() => {
+              setShowDelete(true);
+              console.log(showDelete);
+            }}
+          >
             <span className="material-icons-outlined">delete</span>
             <h3> Retire Cab </h3>
           </div>
@@ -60,7 +67,11 @@ export default function CabCard({ reg, name, color }) {
               </span>
             </div>
 
-            <form onSubmit={""}>
+            <form
+              onSubmit={() => {
+                return <></>;
+              }}
+            >
               <label>Cab Registration Number:</label>
               <input type="text" />
               <label>Cab Model:</label>
@@ -96,6 +107,31 @@ export default function CabCard({ reg, name, color }) {
               <input type="text" />
               <button type="submit">UPDATE DETAILS</button>
             </form>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
+      {showDelete ? (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="modal-top">
+              <h3>CONFIRM RETIRE CAB</h3>
+              <span
+                className="material-icons-outlined"
+                onClick={() => setShowDelete(false)}
+              >
+                {" "}
+                close
+              </span>
+            </div>
+            <div className="delete-modal">
+              <form onSubmit={""}>
+                <label> Are You sure you want to RETIRE this cab?</label>
+                <button>RETURN</button>
+                <button type="submit">DELETE CAB</button>
+              </form>
+            </div>
           </div>
         </div>
       ) : (

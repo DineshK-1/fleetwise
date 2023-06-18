@@ -6,6 +6,7 @@ import Image from "next/image";
 
 export default function DriverCard({ first_name, last_name, ID, email, phone, created_data }) {
   const [showUpdate, setShowUpdate] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
 
   return (
     <div>
@@ -81,9 +82,42 @@ export default function DriverCard({ first_name, last_name, ID, email, phone, cr
               <input type="text" />
               <div className="modal-bottom">
                 <button type="submit">UPDATE DRIVER</button>
-                <button onClick={""}>REMOVE DRIVER</button>
+                <button
+                  onClick={() => {
+                    setShowDelete(true);
+                  }}
+                >
+                  REMOVE DRIVER
+                </button>
               </div>
             </form>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
+      {showDelete ? (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="modal-top">
+              <h3>CONFIRM RETIRE CAB</h3>
+              <span
+                className="material-icons-outlined"
+                onClick={() => {
+                  setShowDelete(false);
+                }}
+              >
+                {" "}
+                close
+              </span>
+            </div>
+            <div className="delete-modal">
+              <form onSubmit={""}>
+                <label> Are You sure you want to REMOVE this driver?</label>
+                <button>RETURN</button>
+                <button type="submit">DELETE CAB</button>
+              </form>
+            </div>
           </div>
         </div>
       ) : (

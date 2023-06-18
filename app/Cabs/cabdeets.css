@@ -190,10 +190,15 @@
 .modal-content button {
   padding: 8px 16px;
   background-color: #00adb5;
-  color: #fff;
+  color: #222831;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   align-self: center;
   margin-top: 20px;
+}
+
+.modal-content .delete-modal {
+  display: flex;
+  flex-direction: column;
 }
