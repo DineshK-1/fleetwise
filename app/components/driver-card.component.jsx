@@ -4,9 +4,10 @@ import React, { useState } from "react";
 import "../Drivers/driverdeets.css";
 import Image from "next/image";
 
-export default function DriverCard({ name, ID, email, phone }) {
+export default function DriverCard({ first_name, last_name, ID, email, phone, created_data }) {
   const [showModal, setShowModal] = useState(false);
   const [showUpdate, setShowUpdate] = useState(false);
+
   return (
     <div>
       <div className="driver-card">
@@ -23,14 +24,14 @@ export default function DriverCard({ name, ID, email, phone }) {
             </div>
 
             <div className="details">
-              <div className="title">{name}</div>
+              <div className="title">{first_name + " " + last_name}</div>
               <div className="id">ID: {ID}</div>
             </div>
           </div>
           <div className="action-buttons">
             <div className="edit-button">
               <span
-                class="material-icons-outlined"
+                className="material-icons-outlined"
                 onClick={() => {
                   setShowUpdate(true);
                 }}
@@ -53,7 +54,7 @@ export default function DriverCard({ name, ID, email, phone }) {
       </div>
       <div className="add-drivers">
         <button onClick={() => setShowModal(true)}>
-          <span class="material-icons-outlined">add</span>
+          <span className="material-icons-outlined">add</span>
           <h2>ADD DRIVER</h2>
         </button>
       </div>
@@ -63,7 +64,7 @@ export default function DriverCard({ name, ID, email, phone }) {
             <div className="modal-top">
               <h3>ADD A DRIVER</h3>
               <span
-                class="material-icons-outlined"
+                className="material-icons-outlined"
                 onClick={() => setShowModal(false)}
               >
                 {" "}
@@ -97,7 +98,7 @@ export default function DriverCard({ name, ID, email, phone }) {
             <div className="modal-top">
               <h3>ALTER DRIVER DETAILS</h3>
               <span
-                class="material-icons-outlined"
+                className="material-icons-outlined"
                 onClick={() => setShowUpdate(false)}
               >
                 {" "}

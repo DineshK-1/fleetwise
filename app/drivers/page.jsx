@@ -1,76 +1,18 @@
 import React from "react";
 import DriverCard from "../components/driver-card.component";
 
-export default function DriverDetails() {
-  const driverarray = [
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    ,
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-    {
-      name: "Joseph Mourinho",
-      id: "2127",
-      email: "joe@hotmail.com",
-      phone: "1892192839",
-    },
-  ];
+async function getData() {
+  // Fetch data from external API
+  const res = await fetch(process.env.API_HOST + "/get_drivers")
+
+  return res.json();
+}
+
+export default async function DriverDetails() {
+  
+  const data = await getData()
+  console.log(data)
+
   return (
     <div className="driver-section">
       <h2 className="w-500">Drivers Management</h2>
@@ -94,14 +36,15 @@ export default function DriverDetails() {
       </div>
 
       <div className="driver-cards">
-        {driverarray.map((driver) => {
+        {data.drivers.map((driver) => {
           return (
             <DriverCard
               key={driver.id}
-              name={driver.name}
-              ID={driver.id}
-              email={driver.email}
-              phone={driver.phone}
+              first_name={driver.driver_first_name}
+              last_name={driver.driver_last_name}
+              ID={driver.driver_ID}
+              email={driver.driver_email}
+              phone={driver.driver_phone}
             />
           );
         })}

@@ -1,27 +1,26 @@
 import "./cabdeets.css";
 import CabCard from "../components/cab-card.component";
 
-export default function CabDetails() {
-  const array = [
-    { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
-    { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
-    { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
-    { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
-    { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
-    { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
-    { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
-    { cabreg: "TN1252165", cabname: "Subaru", cabcolor: "Black" },
-  ];
+async function getData() {
+  // Fetch data from external API
+  const res = await fetch(process.env.API_HOST + "/get_cabs")
+
+  return res.json();
+}
+
+export default async function CabDetails() {
+  const data = await getData()
+  console.log(data)
   return (
     <div className="cabs-page">
-      {array.map((cab) => (
-        <CabCard
-          key={cab.cabreg}
-          reg={cab.cabreg}
-          name={cab.cabname}
-          color={cab.cabcolor}
+      {data.cabs.map((cab) => {
+        return <CabCard
+          key={cab.id}
+          reg={cab.cab_regno}
+          color={cab.cab_color}
+          name={cab.cab_model}
         />
-      ))}
+      })}
     </div>
   );
 }

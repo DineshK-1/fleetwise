@@ -30,11 +30,11 @@ export default function CabCard({ reg, name, color }) {
               console.log(showUpdate);
             }}
           >
-            <span class="material-icons-outlined">info</span>
+            <span className="material-icons-outlined">info</span>
             <h3> Update Cab Info </h3>
           </div>
-          <div className="delete" onClick={setConfirmDelete(true)}>
-            <span class="material-icons-outlined">delete</span>
+          <div className="delete">
+            <span className="material-icons-outlined">delete</span>
             <h3> Retire Cab </h3>
           </div>
         </div>
@@ -43,7 +43,7 @@ export default function CabCard({ reg, name, color }) {
       )}
       <div className="addcabs">
         <button onClick={() => setShowModal(true)}>
-          <span class="material-icons-outlined">add</span>
+          <span className="material-icons-outlined">add</span>
           <h2>ADD CAB</h2>
         </button>
       </div>
@@ -53,7 +53,7 @@ export default function CabCard({ reg, name, color }) {
             <div className="modal-top">
               <h3>ADD A CAB</h3>
               <span
-                class="material-icons-outlined"
+                className="material-icons-outlined"
                 onClick={() => setShowModal(false)}
               >
                 {" "}
@@ -81,7 +81,7 @@ export default function CabCard({ reg, name, color }) {
             <div className="modal-top">
               <h3>UPDATE DETAILS</h3>
               <span
-                class="material-icons-outlined"
+                className="material-icons-outlined"
                 onClick={() => setShowUpdate(false)}
               >
                 {" "}
