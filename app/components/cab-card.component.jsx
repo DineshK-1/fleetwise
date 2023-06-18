@@ -4,6 +4,7 @@ import React, { useState } from "react";
 export default function CabCard({ reg, name, color }) {
   const [expanded, setExpanded] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showUpdate, setShowUpdate] = useState(false);
   return (
     <div
       className="cabcard"
@@ -22,11 +23,17 @@ export default function CabCard({ reg, name, color }) {
       </div>
       {expanded ? (
         <div className="revealcabcard">
-          <div className="update">
+          <div
+            className="update"
+            onClick={() => {
+              setShowUpdate(true);
+              console.log(showUpdate);
+            }}
+          >
             <span class="material-icons-outlined">info</span>
             <h3> Update Cab Info </h3>
           </div>
-          <div className="delete">
+          <div className="delete" onClick={setConfirmDelete(true)}>
             <span class="material-icons-outlined">delete</span>
             <h3> Retire Cab </h3>
           </div>
@@ -59,7 +66,36 @@ export default function CabCard({ reg, name, color }) {
               <input type="text" />
               <label>Cab Model:</label>
               <input type="text" />
+              <label>Cab Color:</label>
+              <input type="text" />
               <button type="submit">ADD CAB</button>
+            </form>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
+      {showUpdate ? (
+        <div className="modal">
+          <div className="modal-content">
+            <div className="modal-top">
+              <h3>UPDATE DETAILS</h3>
+              <span
+                class="material-icons-outlined"
+                onClick={() => setShowUpdate(false)}
+              >
+                {" "}
+                close
+              </span>
+            </div>
+            <form onSubmit={""}>
+              <label>Registration Number:</label>
+              <input type="text" />
+              <label>Cab Model:</label>
+              <input type="text" />
+              <label>Cab Color:</label>
+              <input type="text" />
+              <button type="submit">UPDATE DETAILS</button>
             </form>
           </div>
         </div>
