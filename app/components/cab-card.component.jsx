@@ -27,7 +27,6 @@ export default function CabCard({ reg, name, color }) {
             className="update"
             onClick={() => {
               setShowUpdate(true);
-              console.log(showUpdate);
             }}
           >
             <span className="material-icons-outlined">info</span>

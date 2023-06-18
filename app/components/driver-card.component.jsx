@@ -5,7 +5,6 @@ import "../Drivers/driverdeets.css";
 import Image from "next/image";
 
 export default function DriverCard({ first_name, last_name, ID, email, phone, created_data }) {
-  const [showModal, setShowModal] = useState(false);
   const [showUpdate, setShowUpdate] = useState(false);
 
   return (
@@ -52,46 +51,7 @@ export default function DriverCard({ first_name, last_name, ID, email, phone, cr
           <div className="phone tag">{phone}</div>
         </div>
       </div>
-      <div className="add-drivers">
-        <button onClick={() => setShowModal(true)}>
-          <span className="material-icons-outlined">add</span>
-          <h2>ADD DRIVER</h2>
-        </button>
-      </div>
-      {showModal ? (
-        <div className="modal">
-          <div className="modal-content">
-            <div className="modal-top">
-              <h3>ADD A DRIVER</h3>
-              <span
-                className="material-icons-outlined"
-                onClick={() => setShowModal(false)}
-              >
-                {" "}
-                close
-              </span>
-            </div>
-
-            <form onSubmit={""}>
-              <label>Driver Name:</label>
-              <input type="text" />
-              <label>Driver ID:</label>
-              <input type="text" />
-              <label>Driver Email:</label>
-              <input type="text" />
-              <label>Driver Ph. Number:</label>
-              <input type="text" />
-              <label>Driving Since:</label>
-              <input type="text" />
-              <label>Assigned Vehicle:</label>
-              <input type="text" />
-              <button type="submit">ADD DRIVER</button>
-            </form>
-          </div>
-        </div>
-      ) : (
-        <></>
-      )}
+      
       {showUpdate ? (
         <div className="modal">
           <div className="modal-content">

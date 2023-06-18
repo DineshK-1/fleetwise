@@ -1,17 +1,16 @@
-import React from "react";
 import DriverCard from "../components/driver-card.component";
+import CreateButton from "./Components/create_driver.component";
 
 async function getData() {
   // Fetch data from external API
-  const res = await fetch(process.env.API_HOST + "/get_drivers")
+  const res = await fetch(process.env.NEXT_PUBLIC_API_HOST + "/get_drivers", { cache: 'no-store' })
 
   return res.json();
 }
 
 export default async function DriverDetails() {
-  
+
   const data = await getData()
-  console.log(data)
 
   return (
     <div className="driver-section">
@@ -49,6 +48,8 @@ export default async function DriverDetails() {
           );
         })}
       </div>
+
+      <CreateButton />
     </div>
   );
 }

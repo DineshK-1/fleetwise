@@ -3,14 +3,14 @@ import CabCard from "../components/cab-card.component";
 
 async function getData() {
   // Fetch data from external API
-  const res = await fetch(process.env.API_HOST + "/get_cabs")
+  const res = await fetch(process.env.NEXT_PUBLIC_API_HOST + "/get_cabs", { cache: 'no-store' })
 
   return res.json();
 }
 
 export default async function CabDetails() {
   const data = await getData()
-  console.log(data)
+  
   return (
     <div className="cabs-page">
       {data.cabs.map((cab) => {
