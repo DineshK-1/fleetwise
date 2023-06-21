@@ -1,5 +1,5 @@
-import DriverCard from "../components/driver-card.component";
 import CreateButton from "./Components/create_driver.component";
+import DriversSection from "./Components/drivers_section.component";
 
 async function getData() {
   // Fetch data from external API
@@ -34,22 +34,7 @@ export default async function DriverDetails() {
         />
       </div>
 
-      <div className="driver-cards">
-        {data.drivers.map((driver) => {
-          return (
-            <DriverCard
-              key={driver.id}
-              first_name={driver.driver_first_name}
-              last_name={driver.driver_last_name}
-              ID={driver.driver_ID}
-              email={driver.driver_email}
-              phone={driver.driver_phone}
-            />
-          );
-        })}
-      </div>
-
-      <CreateButton />
+      <DriversSection drivers_data={data} />
     </div>
   );
 }

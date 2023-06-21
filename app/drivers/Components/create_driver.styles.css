@@ -15,7 +15,7 @@
 }
 
 .driver-modal {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -30,36 +30,43 @@
     gap: 1rem;
 }
 
-.driver-modal-content .fields{
+.driver-modal-content .fields form {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
 }
 
-.driver-modal-content .fields .field {
+.driver-modal-content .fields form .field {
     display: flex;
     flex-direction: column;
     font-size: 14px;
 }
 
-.search-alter{
-    background-color: #161618;
+.search-alter {
+    background-color: #161618 !important;
 }
 
-.close-button{
+.driver-modal-content .top{
     display: flex;
-    align-self: flex-end;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-button {
+    display: flex;
     width: fit-content;
     user-select: none;
     cursor: pointer;
     border-radius: 12px;
     padding: 5px;
+    transition: background-color 200ms ease-in;
 }
-.close-button:hover{
+
+.close-button:hover {
     background-color: #161618;
 }
 
-.driver-modal-content .submit{
+.driver-modal-content .submit {
     display: flex;
     align-self: center;
     padding: 1rem;

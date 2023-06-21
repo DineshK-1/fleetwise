@@ -3,7 +3,7 @@ import { useRef, useState } from "react"
 import "./create_driver.styles.css"
 import { motion } from "framer-motion"
 
-export default function CreateButton() {
+export default function CreateButton({ setDrivers }) {
 
     const [showModal, setShowModal] = useState(false);
 
@@ -17,9 +17,16 @@ export default function CreateButton() {
     const handleSubmit = async () => {
         const resp = await fetch(process.env.NEXT_PUBLIC_API_HOST + `/create_driver?first_name=${firstNameRef.current.value}&last_name=${lastNameRef.current.value}&ID=${parseInt(idRef.current.value)}&email=${emailRef.current.value}&phone=${parseInt(phoneRef.current.value)}`, {
             method: "POST",
+        }).then((res) => res.json()).then((res) => {
+            if (res.detail) {
+                console.log("ERROR")
+            } else {
+                setDrivers((drivers) => {
+                    let tempArray = [...drivers.drivers, res]
+                    return { drivers: tempArray }
+                })
+            }
         })
-
-
         setShowModal(false);
     }
 
@@ -27,32 +34,38 @@ export default function CreateButton() {
         <>
             {
                 showModal &&
-                <motion.div initial={{ opacitx: 0 }} animate={{ opacity: 1 }} className="driver-modal">
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="driver-modal">
                     <div className="driver-modal-content">
-                        <div className="close-button" onClick={() => setShowModal(false)}>
-                            <span className="material-icons-outlined">close</span>
+                        <div className="top">
+                            <h3>Add a driver</h3>
+                            <div className="close-button" onClick={() => setShowModal(false)}>
+                                <span className="material-icons-outlined">close</span>
+                            </div>
                         </div>
-                        <motion.div className="fields" initial={{ transition: { staggerChildren: 0.5 } }}>
-                            <motion.div className="field" initial={{ x: -75 }} animate={{ x: 0 }}>
-                                <label>First Name</label>
-                                <motion.input ref={firstNameRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" className="search search-alter" />
-                            </motion.div>
-                            <motion.div className="field" initial={{ x: -75 }} animate={{ x: 0 }}>
-                                <label>Last Name</label>
-                                <motion.input ref={lastNameRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" className="search search-alter" />
-                            </motion.div>
-                            <motion.div className="field" initial={{ x: -75 }} animate={{ x: 0 }}>
-                                <label>ID</label>
-                                <motion.input ref={idRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" className="search search-alter" />
-                            </motion.div>
-                            <motion.div className="field" initial={{ x: -75 }} animate={{ x: 0 }}>
-                                <label>Email</label>
-                                <motion.input ref={emailRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" className="search search-alter" />
-                            </motion.div>
-                            <motion.div className="field" initial={{ x: -75 }} animate={{ x: 0 }}>
-                                <label>Phone Number</label>
-                                <motion.input ref={phoneRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" className="search search-alter" />
-                            </motion.div>
+
+                        <motion.div className="fields" initial={{ opacity: 0 }} animate={{ opacity: 1 }} >
+                            <form>
+                                <div className="field" >
+                                    <label>First Name</label>
+                                    <motion.input ref={firstNameRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" className="search search-alter" />
+                                </div>
+                                <div className="field">
+                                    <label>Last Name</label>
+                                    <motion.input ref={lastNameRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" className="search search-alter" />
+                                </div>
+                                <div className="field">
+                                    <label>ID</label>
+                                    <motion.input ref={idRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" className="search search-alter" />
+                                </div>
+                                <div className="field">
+                                    <label>Email</label>
+                                    <motion.input ref={emailRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="email" className="search search-alter" />
+                                </div>
+                                <div className="field">
+                                    <label>Phone Number</label>
+                                    <motion.input ref={phoneRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" className="search search-alter" />
+                                </div>
+                            </form>
                         </motion.div>
                         <div className="submit" onClick={handleSubmit}>
                             Create Driver
