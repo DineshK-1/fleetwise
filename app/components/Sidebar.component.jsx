@@ -14,7 +14,7 @@ export default function Sidebar() {
             <div className="Navigation">
                 <NavItem text={"Fleet wise"} icon={"question_mark"} expanded={expanded} link={"/"} />
                 <NavItem text={"Cabs"} icon={"local_taxi"} expanded={expanded} link={"/Cabs"} />
-                <NavItem text={"Drivers"} icon={"person"} expanded={expanded} link={"/Drivers"} />
+                <NavItem text={"Drivers"} icon={"person"} expanded={expanded} link={"/drivers"} />
                 <NavItem text={"Management"} icon={"manage_accounts"} expanded={expanded} link={"/Manage"} />
             </div>
 

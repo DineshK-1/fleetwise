@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import "../Drivers/driver.styles.css";
+import "../drivers/driver.styles.css";
 import Image from "next/image";
 
 export default function DriverCard({ first_name, last_name, ID, email, phone, created_data }) {
