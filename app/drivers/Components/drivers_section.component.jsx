@@ -1,6 +1,6 @@
 "use client"
 
-import DriverCard from "@/app/components/driver-card.component";
+import DriverCard from "@/app/components/driver_card.component";
 import { useState } from "react";
 import CreateButton from "./create_driver.component";
 

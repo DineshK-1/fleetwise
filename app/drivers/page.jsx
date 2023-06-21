@@ -1,4 +1,3 @@
-import CreateButton from "./Components/create_driver.component";
 import DriversSection from "./Components/drivers_section.component";
 
 async function getData() {

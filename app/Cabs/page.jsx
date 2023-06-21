@@ -1,5 +1,5 @@
-import "./cabdeets.css";
-import CabCard from "../components/cab-card.component";
+import "./cabs.styles.css";
+import CabCard from "../components/cab_card.component";
 
 async function getData() {
   // Fetch data from external API

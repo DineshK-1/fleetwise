@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import NavItem from "./nav-item.component";
+import NavItem from "./nav_item.component";
 
 export default function Sidebar({ child }) {
 
