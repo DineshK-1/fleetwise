@@ -2,6 +2,7 @@ import './globals.css'
 import { Raleway } from 'next/font/google'
 import 'material-icons/iconfont/outlined.css';
 import Sidebar from './components/Sidebar.component';
+import { Providers } from './providers';
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -12,12 +13,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={raleway.className}>
-        <Sidebar child={children} />
-        <div className="main-wrapper">
-          {children}
-        </div>
+        <Providers>
+          <Sidebar />
+          <div className="main-wrapper">
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   );

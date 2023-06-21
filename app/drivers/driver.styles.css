@@ -18,8 +18,8 @@
   margin: 0.5rem 0;
   padding: 1rem;
 
-  background-color: #212124;
-  color: white;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
   border-radius: 10px;
   gap: 10px;
   user-select: none;
@@ -50,10 +50,11 @@
   border-radius: 10px;
   user-select: none;
   cursor: pointer;
+  color: var(--text-color);
 }
 
 .action-buttons .edit-button:hover {
-  background-color: #161618;
+  background-color: var(--background-color);
 }
 
 .driver-card .card-top .left {
@@ -130,10 +131,10 @@
   outline: none;
   padding: 0.7rem;
   border-radius: 6px;
-  outline: 2px solid #212124;
-  background-color: #212124;
+  outline: 2px solid var(--secondary-color);
+  background-color: var(--secondary-color);
   border: none;
-  color: white;
+  color: var(--text-color);
   font-family: inherit;
   font-size: 14px;
   margin: 10px 0;

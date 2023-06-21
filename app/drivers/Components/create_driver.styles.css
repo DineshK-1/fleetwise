@@ -5,7 +5,7 @@
     z-index: 10;
 
     padding: 1rem;
-    background-color: #212124;
+    background-color: var(--secondary-color);
     border-radius: 10px;
     margin: 1.25rem;
     font-size: .9rem;
@@ -19,7 +19,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #212124;
+    background-color: var(--secondary-color);
     padding: 20px;
     border-radius: 12px;
 }
@@ -43,10 +43,10 @@
 }
 
 .search-alter {
-    background-color: #161618 !important;
+    background-color: var(--background-color) !important;
 }
 
-.driver-modal-content .top{
+.driver-modal-content .top {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -63,14 +63,14 @@
 }
 
 .close-button:hover {
-    background-color: #161618;
+    background-color: var(--background-color);
 }
 
 .driver-modal-content .submit {
     display: flex;
     align-self: center;
     padding: 1rem;
-    background-color: #161618;
+    background-color: var(--background-color);
     width: fit-content;
     border-radius: 10px;
     user-select: none;

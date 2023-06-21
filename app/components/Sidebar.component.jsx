@@ -2,8 +2,9 @@
 
 import { useState } from "react"
 import NavItem from "./nav_item.component";
+import ColorMode from "./color_mode.component";
 
-export default function Sidebar({ child }) {
+export default function Sidebar() {
 
     const [expanded, setExpanded] = useState(false);
 
@@ -15,6 +16,10 @@ export default function Sidebar({ child }) {
                 <NavItem text={"Cabs"} icon={"local_taxi"} expanded={expanded} link={"/Cabs"} />
                 <NavItem text={"Drivers"} icon={"person"} expanded={expanded} link={"/Drivers"} />
                 <NavItem text={"Management"} icon={"manage_accounts"} expanded={expanded} link={"/Manage"} />
+            </div>
+
+            <div className="nav-bottom">
+                <ColorMode />
             </div>
         </div>
     )
