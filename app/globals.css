@@ -44,6 +44,15 @@
   font-weight: 700;
 }
 
+button{
+  outline: none;
+  border: inherit;
+  color: inherit;
+  background-color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

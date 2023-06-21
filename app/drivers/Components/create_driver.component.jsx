@@ -6,6 +6,7 @@ import { motion } from "framer-motion"
 export default function CreateButton({ setDrivers }) {
 
     const [showModal, setShowModal] = useState(false);
+    const [creating, setCreating] = useState(false);
 
     const firstNameRef = useRef();
     const lastNameRef = useRef();
@@ -15,6 +16,7 @@ export default function CreateButton({ setDrivers }) {
 
 
     const handleSubmit = async () => {
+        setCreating(true);
         const resp = await fetch(process.env.NEXT_PUBLIC_API_HOST + `/create_driver?first_name=${firstNameRef.current.value}&last_name=${lastNameRef.current.value}&ID=${parseInt(idRef.current.value)}&email=${emailRef.current.value}&phone=${parseInt(phoneRef.current.value)}`, {
             method: "POST",
         }).then((res) => res.json()).then((res) => {
@@ -26,7 +28,7 @@ export default function CreateButton({ setDrivers }) {
                     return { drivers: tempArray }
                 })
             }
-        })
+        }).finally(() => setCreating(false))
         setShowModal(false);
     }
 
@@ -47,29 +49,29 @@ export default function CreateButton({ setDrivers }) {
                             <form>
                                 <div className="field" >
                                     <label>First Name</label>
-                                    <motion.input ref={firstNameRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" className="search search-alter" />
+                                    <motion.input ref={firstNameRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" defaultValue={"Meyenk"} className="search search-alter" />
                                 </div>
                                 <div className="field">
                                     <label>Last Name</label>
-                                    <motion.input ref={lastNameRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" className="search search-alter" />
+                                    <motion.input ref={lastNameRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" defaultValue={"Rey"} className="search search-alter" />
                                 </div>
                                 <div className="field">
                                     <label>ID</label>
-                                    <motion.input ref={idRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" className="search search-alter" />
+                                    <motion.input ref={idRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="number" defaultValue={69} className="search search-alter" />
                                 </div>
                                 <div className="field">
                                     <label>Email</label>
-                                    <motion.input ref={emailRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="email" className="search search-alter" />
+                                    <motion.input ref={emailRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="email" defaultValue={"mk@gmail.com"} className="search search-alter" />
                                 </div>
                                 <div className="field">
                                     <label>Phone Number</label>
-                                    <motion.input ref={phoneRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" className="search search-alter" />
+                                    <motion.input ref={phoneRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="number" defaultValue={20} className="search search-alter" />
                                 </div>
                             </form>
                         </motion.div>
-                        <div className="submit" onClick={handleSubmit}>
-                            Create Driver
-                        </div>
+                        <button className="submit" disabled={creating ? true : false} onClick={handleSubmit}>
+                            {creating ? "Creating driver..." : "Create Driver"}
+                        </button>
                     </div>
 
                 </motion.div>
