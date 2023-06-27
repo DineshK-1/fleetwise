@@ -32,6 +32,7 @@ export default function DriversSection({ drivers_data }) {
                                 ID={driver.driver_ID}
                                 email={driver.driver_email}
                                 phone={driver.driver_phone}
+                                created_date={driver.created_date}
                                 modalOccupied={modalOccupied}
                                 setModalOccupied={setModalOccupied}
                                 setDrivers={setDrivers}
@@ -40,7 +41,7 @@ export default function DriversSection({ drivers_data }) {
                     })}
             </div>
 
-            <CreateButton setDrivers={setDrivers} />
+            <CreateButton setDrivers={setDrivers} modalOccupied={modalOccupied} setModalOccupied={setModalOccupied} />
         </>
     )
 }

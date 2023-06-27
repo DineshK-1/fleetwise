@@ -4,8 +4,9 @@ import { useRef, useState } from "react";
 import "../drivers/driver.styles.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
 
-export default function DriverCard({ primary_id, first_name, last_name, ID, email, phone, created_data, setModalOccupied, modalOccupied, setDrivers }) {
+export default function DriverCard({ primary_id, first_name, last_name, ID, email, phone, created_date, setModalOccupied, modalOccupied, setDrivers }) {
 
   const router = useRouter();
   const [edit, setEdit] = useState(false);
@@ -34,7 +35,7 @@ export default function DriverCard({ primary_id, first_name, last_name, ID, emai
         })
         router.refresh()
       }
-    }).finally(() => setEditing(false))
+    }).finally(() => { setEditing(false); setEdit(false); setModalOccupied(false); })
   }
 
   return (
@@ -79,7 +80,7 @@ export default function DriverCard({ primary_id, first_name, last_name, ID, emai
 
         <div className="tags">
           <div className="cab tag">Drives a Subaru</div>
-          <div className="since tag">Driving since 2020</div>
+          <div className="since tag">Driving since {created_date}</div>
         </div>
 
         <div className="tags">
@@ -87,52 +88,52 @@ export default function DriverCard({ primary_id, first_name, last_name, ID, emai
           <div className="phone tag">{phone}</div>
         </div>
       </div >
-      {
-        edit &&
-        <div className="driver-modal">
-          <div className="driver-modal-content">
-            <div className="top">
-              <h3>Edit a driver</h3>
-              <div className="close-button" onClick={() => setEdit(() => {
-                setModalOccupied(false);
-                return false;
-              })}>
-                <span className="material-icons-outlined">close</span>
+      <AnimatePresence>
+        {
+          edit &&
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="driver-modal">
+            <div className="driver-modal-content">
+              <div className="top">
+                <h3>Edit a driver</h3>
+                <div className="close-button" onClick={() => setEdit(() => {
+                  setModalOccupied(false);
+                  return false;
+                })}>
+                  <span className="material-icons-outlined">close</span>
+                </div>
               </div>
+
+              <div className="fields" >
+                <form>
+                  <div className="field" >
+                    <label>First Name</label>
+                    <motion.input ref={firstNameRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" defaultValue={first_name} className="search search-alter" />
+                  </div>
+                  <div className="field">
+                    <label>Last Name</label>
+                    <motion.input ref={lastNameRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" defaultValue={last_name} className="search search-alter" />
+                  </div>
+                  <div className="field">
+                    <label>ID</label>
+                    <motion.input ref={idRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="number" defaultValue={ID} className="search search-alter" />
+                  </div>
+                  <div className="field">
+                    <label>Email</label>
+                    <motion.input ref={emailRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="email" defaultValue={email} className="search search-alter" />
+                  </div>
+                  <div className="field">
+                    <label>Phone Number</label>
+                    <motion.input ref={phoneRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="number" defaultValue={phone} className="search search-alter" />
+                  </div>
+                </form>
+              </div>
+              <button className="submit" disabled={editing ? true : false} onClick={handleEdit}>
+                {editing ? "Editing driver..." : "Edit Driver"}
+              </button>
             </div>
-
-            <div className="fields" >
-              <form>
-                <div className="field" >
-                  <label>First Name</label>
-                  <input ref={firstNameRef} type="text" defaultValue={first_name} className="search search-alter" />
-                </div>
-                <div className="field">
-                  <label>Last Name</label>
-                  <input ref={lastNameRef} type="text" defaultValue={last_name} className="search search-alter" />
-                </div>
-                <div className="field">
-                  <label>ID</label>
-                  <input ref={idRef} type="number" defaultValue={ID} className="search search-alter" />
-                </div>
-                <div className="field">
-                  <label>Email</label>
-                  <input ref={emailRef} type="email" defaultValue={email} className="search search-alter" />
-                </div>
-                <div className="field">
-                  <label>Phone Number</label>
-                  <input ref={phoneRef} type="number" defaultValue={phone} className="search search-alter" />
-                </div>
-              </form>
-            </div>
-            <button className="submit" disabled={editing ? true : false} onClick={handleEdit}>
-              {editing ? "Editing driver..." : "Edit Driver"}
-            </button>
-          </div>
-
-        </div>
-
-      }
+          </motion.div>
+        }
+      </AnimatePresence>
     </>
   );
 }
