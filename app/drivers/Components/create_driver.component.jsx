@@ -2,8 +2,11 @@
 import { useRef, useState } from "react"
 import "./create_driver.styles.css"
 import { motion } from "framer-motion"
+import { useRouter } from "next/navigation"
 
 export default function CreateButton({ setDrivers }) {
+
+    const router = useRouter();
 
     const [showModal, setShowModal] = useState(false);
     const [creating, setCreating] = useState(false);
@@ -17,7 +20,7 @@ export default function CreateButton({ setDrivers }) {
 
     const handleSubmit = async () => {
         setCreating(true);
-        const resp = await fetch(process.env.NEXT_PUBLIC_API_HOST + `/create_driver?first_name=${firstNameRef.current.value}&last_name=${lastNameRef.current.value}&ID=${parseInt(idRef.current.value)}&email=${emailRef.current.value}&phone=${parseInt(phoneRef.current.value)}`, {
+        const resp = await fetch(process.env.NEXT_PUBLIC_API_HOST + `/create_driver?first_name=${firstNameRef.current.value}&last_name=${lastNameRef.current.value}&ID=${idRef.current.value}&email=${emailRef.current.value}&phone=${phoneRef.current.value}`, {
             method: "POST",
         }).then((res) => res.json()).then((res) => {
             if (res.detail) {
@@ -27,6 +30,7 @@ export default function CreateButton({ setDrivers }) {
                     let tempArray = [...drivers.drivers, res]
                     return { drivers: tempArray }
                 })
+                router.refresh()
             }
         }).finally(() => setCreating(false))
         setShowModal(false);
