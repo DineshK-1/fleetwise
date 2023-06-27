@@ -37,7 +37,7 @@ export default function DriversSection({ drivers_data }) {
                     />
                 </div>
                 <div className="buttons-section">
-                    <motion.div initial={{ opacitx: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.9 }} transition={{ type: "spring", stiffness: 200, damping: 10 }} className="search-button">
+                    <motion.div initial={{ opacitx: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.9 }} transition={{ type: "spring", stiffness: 150, damping: 12 }} className="search-button">
                         Search
                     </motion.div>
                     <CreateButton setDrivers={setDrivers} modalOccupied={modalOccupied} setModalOccupied={setModalOccupied} />

@@ -73,3 +73,13 @@
     user-select: none;
     cursor: pointer;
 }
+
+.submit.delete-button{
+    background-color: lightcoral;
+}
+
+.driver-modal-content .buttons{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}

@@ -19,6 +19,8 @@ export default function DriverCard({ primary_id, first_name, last_name, ID, emai
 
   const [editing, setEditing] = useState(false);
 
+  const [confirmDelete, setConfirmDelete] = useState(false);
+
   const handleEdit = async () => {
     setEditing(true);
     const resp = await fetch(process.env.NEXT_PUBLIC_API_HOST + `/update_driver?id=${primary_id}&first_name=${firstNameRef.current.value}&last_name=${lastNameRef.current.value}&ID=${idRef.current.value}&email=${emailRef.current.value}&phone=${phoneRef.current.value}`, {
@@ -36,6 +38,27 @@ export default function DriverCard({ primary_id, first_name, last_name, ID, emai
         router.refresh()
       }
     }).finally(() => { setEditing(false); setEdit(false); setModalOccupied(false); })
+  }
+
+  const handleDelete = async () => {
+    if (confirmDelete) {
+      const resp = await fetch(process.env.NEXT_PUBLIC_API_HOST + `/delete_driver?id=${primary_id}`, {
+        method: "POST",
+      }).then((res) => res.json()).then((res) => {
+        if (res.detail) {
+          console.log("ERROR")
+        } else if (res.deleted == true) {
+          setDrivers((drivers) => {
+            let tempArray = [...drivers.drivers]
+            tempArray = tempArray.filter((ele) => ele.id !== primary_id)
+            return { drivers: tempArray }
+          })
+          router.refresh()
+        }
+      }).finally(() => { setEdit(false); setConfirmDelete(false); setModalOccupied(false); })
+      return;
+    }
+    setConfirmDelete(true);
   }
 
   return (
@@ -103,9 +126,11 @@ export default function DriverCard({ primary_id, first_name, last_name, ID, emai
                 </div>
               </div>
 
-              <div className="fields" >
+              {/* Input fields */}
+
+              <div className="fields">
                 <form>
-                  <div className="field" >
+                  <div className="field">
                     <label>First Name</label>
                     <motion.input ref={firstNameRef} whileFocus={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 400, damping: 10 }} type="text" defaultValue={first_name} className="search search-alter" />
                   </div>
@@ -127,9 +152,26 @@ export default function DriverCard({ primary_id, first_name, last_name, ID, emai
                   </div>
                 </form>
               </div>
-              <button className="submit" disabled={editing ? true : false} onClick={handleEdit}>
-                {editing ? "Editing driver..." : "Edit Driver"}
-              </button>
+
+              {/* Buttons for server actions */}
+
+              <div className="buttons">
+                <button className="submit" disabled={editing ? true : false} onClick={handleEdit}>
+                  {editing ? "Editing driver..." : "Edit Driver"}
+                </button>
+                <button className="submit delete-button" onClick={handleDelete}>
+                  {confirmDelete ? "Are you sure?" : "Delete Driver"}
+                </button>
+
+                <AnimatePresence>
+                  {
+                    confirmDelete &&
+                    <motion.button initial={{ x: -40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ opacity: 0 }} className="submit delete-button" onClick={() => setConfirmDelete(false)}>
+                      X
+                    </motion.button>
+                  }
+                </AnimatePresence>
+              </div>
             </div>
           </motion.div>
         }
