@@ -159,7 +159,7 @@
 
 .search:focus {
   outline: 2px solid #787879;
-  flex: 3 1 auto;
+  flex: 2 1 auto;
   transition: all 250ms;
 }
 
