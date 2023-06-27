@@ -18,6 +18,31 @@ export default function DriversSection({ drivers_data }) {
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="hide-background" />
                 }
             </AnimatePresence>
+            <div className="search-drivers">
+                <div className="search-boxes">
+                    <motion.input
+                        type="search"
+                        className="search name-search"
+                        placeholder="Enter a name to search"
+                    />
+                    <motion.input
+                        type="search"
+                        className="search"
+                        placeholder="Enter a ID to search"
+                    />
+                    <motion.input
+                        type="search"
+                        className="search cab-search"
+                        placeholder="Enter name of the cab"
+                    />
+                </div>
+                <div className="buttons-section">
+                    <motion.div initial={{ opacitx: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.9 }} transition={{ type: "spring", stiffness: 200, damping: 10 }} className="search-button">
+                        Search
+                    </motion.div>
+                    <CreateButton setDrivers={setDrivers} modalOccupied={modalOccupied} setModalOccupied={setModalOccupied} />
+                </div>
+            </div>
 
             <div className="driver-cards">
                 {
@@ -40,8 +65,6 @@ export default function DriversSection({ drivers_data }) {
                         );
                     })}
             </div>
-
-            <CreateButton setDrivers={setDrivers} modalOccupied={modalOccupied} setModalOccupied={setModalOccupied} />
         </>
     )
 }

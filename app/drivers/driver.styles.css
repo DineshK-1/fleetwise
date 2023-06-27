@@ -124,6 +124,20 @@
 
 .search-drivers {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-drivers .search-boxes {
+  display: flex;
+  padding: 0 1rem 0 0;
+  gap: 20px;
+  width: 100%;
+}
+
+.search-drivers .buttons-section{
+  display: flex;
+  align-items: center;
   gap: 20px;
 }
 
@@ -140,67 +154,21 @@
   margin: 10px 0;
 
   transition: all 250ms;
+  flex: 1 1 auto;
 }
 
 .search:focus {
   outline: 2px solid #787879;
-
+  flex: 3 1 auto;
   transition: all 250ms;
 }
 
 .name-search {
-  width: 40%;
+  flex: 1 1 auto;
 }
 
 .cab-search {
-  width: 15%;
-}
-
-.add-drivers {
-  position: fixed;
-  bottom: 30px;
-  left: 52%;
-  transform: translateX(-48%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #222831;
-  color: #00adb5;
-  background-color: transparent;
-  flex-direction: row;
-}
-
-.add-drivers button {
-  background-color: #00adb5;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  height: 70px;
-  width: 200px;
-  transition: background-color 200ms ease-in, transform 300ms ease-in;
-}
-
-.add-drivers button:hover {
-  background-color: #222831;
-  transform: scale(1.05);
-  color: #00adb5;
-}
-
-.add-drivers button:active {
-  transform: scale(0.98);
-}
-
-.add-drivers button span {
-  margin: auto;
-  justify-content: center;
-  margin: 2px 5px;
-}
-
-.add-drivers button h2 {
-  margin: 2px 5px;
-  justify-content: center;
+  flex: 1 1 auto;
 }
 
 .modal-content {

@@ -48,7 +48,7 @@ export default function CreateButton({ setDrivers, modalOccupied, setModalOccupi
                         <div className="driver-modal-content">
                             <div className="top">
                                 <h3>Add a driver</h3>
-                                <div className="close-button" onClick={() => setShowModal(false)}>
+                                <div className="close-button" onClick={() => { setShowModal(false); setModalOccupied(false); }}>
                                     <span className="material-icons-outlined">close</span>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@ export default function CreateButton({ setDrivers, modalOccupied, setModalOccupi
                     </motion.div>
                 }
             </AnimatePresence>
-            <motion.div initial={{ opacitx: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} transition={{ type: "spring", stiffness: 200, damping: 10 }} className="create-button" onClick={() => {
+            <motion.div initial={{ opacitx: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.9 }} transition={{ type: "spring", stiffness: 200, damping: 10 }} className="search-button" onClick={() => {
                 if (modalOccupied) {
                     return null;
                 }
