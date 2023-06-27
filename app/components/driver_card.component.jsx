@@ -63,7 +63,7 @@ export default function DriverCard({ primary_id, first_name, last_name, ID, emai
 
   return (
     <>
-      <div className="driver-card">
+      <motion.div key={primary_id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="driver-card">
         <div className="card-top">
           <div className="left">
             <div className="image">
@@ -110,7 +110,7 @@ export default function DriverCard({ primary_id, first_name, last_name, ID, emai
           <div className="email tag">{email}</div>
           <div className="phone tag">{phone}</div>
         </div>
-      </div >
+      </motion.div >
       <AnimatePresence>
         {
           edit &&

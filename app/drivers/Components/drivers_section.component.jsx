@@ -50,7 +50,7 @@ export default function DriversSection({ drivers_data }) {
                         ref={nameRef}
                     />
                     <motion.input
-                        type="search"
+                        type="number"
                         className="search"
                         placeholder="Enter a ID to search"
                         ref={idRef}
@@ -70,25 +70,27 @@ export default function DriversSection({ drivers_data }) {
             </div>
 
             <div className="driver-cards">
-                {
-                    drivers &&
-                    drivers.drivers.map((driver) => {
-                        return (
-                            <DriverCard
-                                key={driver.id}
-                                primary_id={driver.id}
-                                first_name={driver.driver_first_name}
-                                last_name={driver.driver_last_name}
-                                ID={driver.driver_ID}
-                                email={driver.driver_email}
-                                phone={driver.driver_phone}
-                                created_date={driver.created_date}
-                                modalOccupied={modalOccupied}
-                                setModalOccupied={setModalOccupied}
-                                setDrivers={setDrivers}
-                            />
-                        );
-                    })}
+                <AnimatePresence mode="sync">
+                    {
+                        drivers &&
+                        drivers.drivers.map((driver) => {
+                            return (
+                                <DriverCard
+                                    key={driver.id}
+                                    primary_id={driver.id}
+                                    first_name={driver.driver_first_name}
+                                    last_name={driver.driver_last_name}
+                                    ID={driver.driver_ID}
+                                    email={driver.driver_email}
+                                    phone={driver.driver_phone}
+                                    created_date={driver.created_date}
+                                    modalOccupied={modalOccupied}
+                                    setModalOccupied={setModalOccupied}
+                                    setDrivers={setDrivers}
+                                />
+                            );
+                        })}
+                </AnimatePresence>
             </div>
         </>
     )
