@@ -2,9 +2,10 @@
 
 import Image from "next/image"
 
-export default function DraggableDriver({ first, second, third, Draggable, deleteEvent }) {
+export default function DraggableDriver({ driver_id, first, second, third, Draggable, deleteEvent }) {
 
     const handleOnDrag = (event) => {
+        event.dataTransfer.setData("driver_id", driver_id)
         event.dataTransfer.setData("widgetName", second)
         event.dataTransfer.setData("widgetID", third)
     }

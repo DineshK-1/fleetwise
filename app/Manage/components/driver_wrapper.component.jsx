@@ -21,7 +21,7 @@ export default function DriverWrapper({ Drivers }) {
                 drivers.drivers.map((driver) => {
                     if ((driver.driver_first_name + " " + driver.driver_last_name).toLowerCase().includes(nameQuery.toLowerCase()) && driver.driver_ID.toString().includes(idQuery)) {
                         return (
-                            <DraggableDriver key={driver.id} first={"test"} second={`${driver.driver_first_name} ${driver.driver_last_name}`} third={driver.driver_ID} Draggable={true} />
+                            <DraggableDriver key={driver.id} driver_id={driver.id} first={"test"} second={`${driver.driver_first_name} ${driver.driver_last_name}`} third={driver.driver_ID} Draggable={true} />
                         )
                     }
 
