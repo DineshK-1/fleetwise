@@ -84,6 +84,7 @@ export default function DriversSection({ drivers_data }) {
                                     email={driver.driver_email}
                                     phone={driver.driver_phone}
                                     created_date={driver.created_date}
+                                    cab={driver.cab}
                                     modalOccupied={modalOccupied}
                                     setModalOccupied={setModalOccupied}
                                     setDrivers={setDrivers}

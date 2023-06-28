@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function DriverCard({ primary_id, first_name, last_name, ID, email, phone, created_date, setModalOccupied, modalOccupied, setDrivers }) {
+export default function DriverCard({ primary_id, first_name, last_name, ID, email, phone, created_date, cab, setModalOccupied, modalOccupied, setDrivers }) {
 
   const router = useRouter();
   const [edit, setEdit] = useState(false);
@@ -102,7 +102,7 @@ export default function DriverCard({ primary_id, first_name, last_name, ID, emai
         </div>
 
         <div className="tags">
-          <div className="cab tag">Drives a Subaru</div>
+          <div className="cab tag">{cab ? `Drives a ${cab.cab_model}` : "Cab's not assigned"}</div>
           <div className="since tag">Driving since {created_date}</div>
         </div>
 
