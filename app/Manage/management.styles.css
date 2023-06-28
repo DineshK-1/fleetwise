@@ -12,14 +12,14 @@
     gap: 1rem;
 }
 
-.manage-page .manage-wrapper .cabs{
+.manage-page .manage-wrapper .cabs {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     flex: 3 1 auto;
 }
 
-.manage-page .manage-wrapper .drivers{
+.manage-page .manage-wrapper .drivers {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -49,10 +49,16 @@
     border-radius: 10px;
     transition: all 500ms;
 }
-.draggable-box:hover{
+
+.draggable-box:hover {
     border: 2px solid #787879;
 }
 
 .divider {
     border: 1px solid #787879;
+}
+
+.search-boxes {
+    display: flex;
+    gap: .5rem;
 }

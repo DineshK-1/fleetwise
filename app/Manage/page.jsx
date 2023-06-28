@@ -1,8 +1,18 @@
-import DraggableDriver from "./components/draggable_driver.component";
+import DriverWrapper from "./components/driver_wrapper.component";
 import ManageCabCard from "./components/manage_cab_card.component";
 import "./management.styles.css";
 
-export default function ManagementPage() {
+async function getData() {
+  // Fetch data from external API
+  let res = await fetch(process.env.NEXT_PUBLIC_API_HOST + "/get_drivers", { cache: 'no-store' })
+  res = await res.json()
+  return [res, {}];
+}
+
+export default async function ManagementPage() {
+
+  const [drivers, cabs] = await getData();
+
   return (
     <div className="manage-page">
       <h2 className="w-500">Cab-Driver Relations</h2>
@@ -12,10 +22,7 @@ export default function ManagementPage() {
           <ManageCabCard driver_name={"DK"} driver_id={"6969"} />
           <ManageCabCard />
         </div>
-        <div className="drivers">
-          <h3 className="w-500">Drivers</h3>
-          <DraggableDriver first={"test"} second={"Dinesh"} third={"6969"} Draggable={true} />
-        </div>
+        <DriverWrapper Drivers={drivers} />
       </div>
     </div>
   )
