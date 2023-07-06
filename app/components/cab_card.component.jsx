@@ -1,142 +1,38 @@
 "use client";
 import React, { useState } from "react";
+import cabimg from "../Cabs/cabpic.jpg";
 
-export default function CabCard({ reg, name, color }) {
-  const [expanded, setExpanded] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [showUpdate, setShowUpdate] = useState(false);
-  const [showDelete, setShowDelete] = useState(false);
+export default function CabCard({ cab_id, reg_no, cab_model, color }) {
+  const [hover, setHover] = useState(false);
   return (
-    <div
-      className="cabcard"
-      style={{ height: expanded ? "160px" : "75px" }}
-      onMouseEnter={() => setExpanded(true)}
-      onMouseLeave={() => setExpanded(false)}
-    >
-      <div className="cabcardtop">
-        <p>
-          {color}
-          {name}
-        </p>
-        <h3> {reg} </h3>
-
-        <h4>IMAGE</h4>
+    <div>
+      <div
+        className="cab-container"
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        <div
+          className="cab-img"
+          style={{
+            backgroundImage: `url(${cabimg.src})`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            opacity: hover ? "0.75" : "1",
+            width: "200px",
+            height: "400px",
+            borderRadius: "10px",
+          }}
+        >
+          {hover && (
+            <div className="cab-info" style={{ opacity: "1" }}>
+              <p>{reg_no}</p>
+              <p>{cab_model}</p>
+              <p>{color}</p>
+            </div>
+          )}
+        </div>
       </div>
-      {expanded ? (
-        <div className="revealcabcard">
-          <div
-            className="update"
-            onClick={() => {
-              setShowUpdate(true);
-            }}
-          >
-            <span className="material-icons-outlined">info</span>
-            <h3> Update Cab Info </h3>
-          </div>
-          <div
-            className="delete"
-            onClick={() => {
-              setShowDelete(true);
-              console.log(showDelete);
-            }}
-          >
-            <span className="material-icons-outlined">delete</span>
-            <h3> Retire Cab </h3>
-          </div>
-        </div>
-      ) : (
-        <></>
-      )}
-      <div className="addcabs">
-        <button onClick={() => setShowModal(true)}>
-          <span className="material-icons-outlined">add</span>
-          <h2>ADD CAB</h2>
-        </button>
-      </div>
-      {showModal ? (
-        <div className="modal">
-          <div className="modal-content">
-            <div className="modal-top">
-              <h3>ADD A CAB</h3>
-              <span
-                className="material-icons-outlined"
-                onClick={() => setShowModal(false)}
-              >
-                {" "}
-                close
-              </span>
-            </div>
-
-            <form
-              onSubmit={() => {
-                return <></>;
-              }}
-            >
-              <label>Cab Registration Number:</label>
-              <input type="text" />
-              <label>Cab Model:</label>
-              <input type="text" />
-              <label>Cab Color:</label>
-              <input type="text" />
-              <button type="submit">ADD CAB</button>
-            </form>
-          </div>
-        </div>
-      ) : (
-        <></>
-      )}
-      {showUpdate ? (
-        <div className="modal">
-          <div className="modal-content">
-            <div className="modal-top">
-              <h3>UPDATE DETAILS</h3>
-              <span
-                className="material-icons-outlined"
-                onClick={() => setShowUpdate(false)}
-              >
-                {" "}
-                close
-              </span>
-            </div>
-            <form onSubmit={""}>
-              <label>Registration Number:</label>
-              <input type="text" />
-              <label>Cab Model:</label>
-              <input type="text" />
-              <label>Cab Color:</label>
-              <input type="text" />
-              <button type="submit">UPDATE DETAILS</button>
-            </form>
-          </div>
-        </div>
-      ) : (
-        <></>
-      )}
-      {showDelete ? (
-        <div className="modal">
-          <div className="modal-content">
-            <div className="modal-top">
-              <h3>CONFIRM RETIRE CAB</h3>
-              <span
-                className="material-icons-outlined"
-                onClick={() => setShowDelete(false)}
-              >
-                {" "}
-                close
-              </span>
-            </div>
-            <div className="delete-modal">
-              <form onSubmit={""}>
-                <label> Are You sure you want to RETIRE this cab?</label>
-                <button>RETURN</button>
-                <button type="submit">DELETE CAB</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <></>
-      )}
     </div>
   );
 }

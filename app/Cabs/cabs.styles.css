@@ -1,204 +1,68 @@
-.cabcard {
-  box-shadow: 1.7px 1.8px 33.3px -23px rgba(0, 0, 0, 0.08),
-    5.8px 6px 111.7px -23px rgba(0, 0, 0, 0.048),
-    26px 27px 500px -23px rgba(0, 0, 0, 0.032);
-  color: #00adb5;
-  background-color: #222831;
+.add-cabs {
   display: flex;
   flex-direction: column;
-  width: 70%;
-  border-radius: 14px;
-  margin: 20px 0;
-  transition: all 200ms ease-in;
+}
+
+.add-cabs-btn {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background-color: yellow;
+  color: black;
+  font-size: 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.cab-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 200px;
+}
+
+.cab-info {
+  z-index: 99;
+}
+
+.cab-img p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: whitesmoke;
+  font-size: 20px;
+  font-weight: 800;
+  text-align: center;
+  opacity: 1;
+  margin: 25px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.cab-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
   overflow: hidden;
 }
 
-.cabcard h3 {
-  margin-left: 50px;
-  margin-right: 600px;
+.cab-container .cab-img {
+  margin-top: 15px;
 }
 
-.cabcard span {
-  margin-left: 40px;
-}
-
-.revealcabcard {
-  visibility: hidden;
-  transition: visibility 200ms ease-in;
-}
-
-.cabcard:hover .revealcabcard {
-  visibility: visible;
-}
-
-.revealcabcard .update {
-  display: flex;
-  flex-direction: row;
-  margin: 7px 2px;
-  padding: 2px;
-}
-.revealcabcard .update:hover {
-  background-color: #00adb5;
-  cursor: pointer;
-  color: #222831;
-  border-radius: 15px;
-  transition: background-color 200ms ease-in;
-}
-
-.revealcabcard .delete {
-  display: flex;
-  flex-direction: row;
-  margin: 12px 2px;
-  padding: 2px;
-}
-
-.revealcabcard .delete:hover {
-  background-color: #00adb5;
-  cursor: pointer;
-  color: #222831;
-  border-radius: 15px;
-  transition: background-color 200ms ease-in;
-}
-
-.cabs-page {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0px;
-}
-
-.cabcard .cabcardtop {
-  display: flex;
-  padding: 1.5rem;
-  align-items: center;
-}
-
-.addcabs {
-  position: fixed;
-  bottom: 20px;
-  left: 52%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #222831;
-  color: #00adb5;
-  background-color: transparent;
-  flex-direction: row;
-}
-
-.addcabs button {
-  background-color: #00adb5;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  height: 70px;
-  width: 200px;
-  transition: background-color 200ms ease-in, transform 300ms ease-in;
-}
-
-.addcabs button:hover {
-  background-color: #222831;
-  transform: scale(1.05);
-  color: #00adb5;
-}
-
-.addcabs button:active {
-  transform: scale(0.98);
-}
-
-.addcabs button span {
-  margin: auto;
-  justify-content: center;
-  margin: 2px 5px;
-}
-
-.addcabs button h2 {
-  margin: 2px 5px;
-  justify-content: center;
-}
-
-.modal {
+.add-cab-modal {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.modal-content {
-  background-color: #222831;
-  padding: 19px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  max-width: 400px;
-  width: 100%;
-  max-height: 400px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-content .modal-top {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin: 10px 5px;
-}
-
-.modal-content .close-icon {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
-}
-
-.modal-content h3 {
-  margin: 0;
-}
-
-.modal-content form {
-  margin-top: 30px;
-  margin: 5px;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-content label {
-  display: block;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.modal-content input[type="text"] {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-bottom: 6px;
-}
-
-.modal-content button {
-  padding: 8px 16px;
-  background-color: #00adb5;
-  color: #222831;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  align-self: center;
-  margin-top: 20px;
-}
-
-.modal-content .delete-modal {
-  display: flex;
-  flex-direction: column;
+  z-index: 999;
 }
