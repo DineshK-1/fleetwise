@@ -2,11 +2,11 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useRef, useState } from "react";
 import CabCard from "@/app/components/cab_card.component";
-import roadpic from "@/app/Cabs/road.jpg";
+import CreateCab from "./create_cab.component";
 
 export default function CabsSection({ cabs_data }) {
   const [cabs, setCabs] = useState(cabs_data);
-  const [addCabModal, setaddCabModal] = useState(false);
+  const [modalOccupied, setModalOccupied] = useState(false);
 
   const nameRef = useRef();
   const idRef = useRef();
@@ -56,41 +56,36 @@ export default function CabsSection({ cabs_data }) {
           ref={idRef}
         />
       </div>
-      <div className="add-cabs">
-        <button className="add-cabs-btn" onClick={() => setaddCabModal(true)}>
-          + Add a cab
-        </button>
+      <div className="add-cab-btn">
+        <motion.div
+          initial={{ opacitx: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 150, damping: 12 }}
+          className="search-button"
+          onClick={handleSearch}
+        >
+          Search
+        </motion.div>
+        <CreateCab
+          setCabs={setCabs}
+          modalOccupied={modalOccupied}
+          setModalOccupied={setModalOccupied}
+        />
       </div>
 
-      <div
-        className="cab-cards"
-        style={{
-          backgroundImage: `url(${roadpic.src})`,
-          backgroundRepeat: "repeat-y",
-          backgroundPosition: "center",
-        }}
-      >
+      <div className="cab-cards">
         {cabs.cabs.map((cab) => (
           <CabCard
             key={cab.id}
             cab_id={cab.id}
             reg_no={cab.cab_regno}
             cab_model={cab.cab_model}
-            color={cab.cab_color}
+            cab_color={cab.cab_color}
           />
         ))}
       </div>
-      {addCabModal ? (
-        <div
-          className="add-cab-modal"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          <p>name</p>
-          <p> MOdel</p>
-        </div>
-      ) : null}
     </div>
   );
 }
