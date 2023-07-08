@@ -42,39 +42,38 @@ export default function CabsSection({ cabs_data }) {
     >
       <div className="search-cabs">
         <div className="search-boxes">
-          <motion.input
+          <input
             type="search"
             className="search name-search"
             placeholder="Filter by model (Dropdown)"
             ref={nameRef}
           />
+          <input
+            type="search"
+            className="search name-search"
+            placeholder="Search by reg number"
+            ref={idRef}
+          />
+          <div className="add-cab-btn">
+            <motion.div
+              initial={{ opacitx: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 150, damping: 12 }}
+              className="search-button"
+              onClick={handleSearch}
+            >
+              Search
+            </motion.div>
+          </div>
         </div>
-        <motion.input
-          type="search"
-          className="search name-search"
-          placeholder="Search by reg number"
-          ref={idRef}
-        />
-      </div>
-      <div className="add-cab-btn">
-        <motion.div
-          initial={{ opacitx: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{ type: "spring", stiffness: 150, damping: 12 }}
-          className="search-button"
-          onClick={handleSearch}
-        >
-          Search
-        </motion.div>
         <CreateCab
-          setCabs={setCabs}
-          modalOccupied={modalOccupied}
-          setModalOccupied={setModalOccupied}
-        />
+              setCabs={setCabs}
+              modalOccupied={modalOccupied}
+              setModalOccupied={setModalOccupied}
+            />
       </div>
-
       <div className="cab-cards">
         {cabs.cabs.map((cab) => (
           <CabCard

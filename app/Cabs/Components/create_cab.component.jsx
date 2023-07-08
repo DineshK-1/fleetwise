@@ -20,7 +20,7 @@ export default function CreateCab({
     setCreating(true);
     const resp = await fetch(
       process.env.NEXT_PUBLIC_API_HOST +
-        `/create_cab?model=${model.current.value}&color=${color.current.value}&regno=${regno.current.value}`,
+      `/create_cab?model=${model.current.value}&color=${color.current.value}&regno=${regno.current.value}`,
       {
         method: "POST",
       }
@@ -49,7 +49,7 @@ export default function CreateCab({
   };
 
   return (
-    <div>
+    <>
       <div
         className="add-cabs-btn"
         onClick={() => {
@@ -100,6 +100,6 @@ export default function CreateCab({
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

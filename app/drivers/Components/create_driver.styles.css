@@ -1,15 +1,3 @@
-.search-button{
-    padding: .8rem 1.5rem;
-    background-color: var(--secondary-color);
-    border-radius: 10px;
-    font-size: .8rem;
-    width: fit-content;
-
-    white-space: nowrap;
-    user-select: none;
-    cursor: pointer;
-}
-
 .driver-modal {
     position: fixed;
     top: 50%;
