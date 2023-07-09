@@ -18,7 +18,7 @@ export default function CabCard({ cab_id, reg_no, cab_model, cab_color }) {
     try {
       const resp = await fetch(
         process.env.NEXT_PUBLIC_API_HOST +
-          `/create_cab?model=${model.current.value}&color=${color.current.value}&regno=${regno.current.value}`,
+        `/create_cab?model=${model.current.value}&color=${color.current.value}&regno=${regno.current.value}`,
         {
           method: "POST",
         }
@@ -106,7 +106,7 @@ export default function CabCard({ cab_id, reg_no, cab_model, cab_color }) {
                   <label>Model:</label>
                   <input type="text" placeholder="Model" value={cab_model} />
                   <label>Color:</label>
-                  <input type="text" placeholder="Color" value={color} />
+                  <input type="text" placeholder="Color" value={cab_color} />
                   <label>Reg Number:</label>
                   <input
                     type="text"

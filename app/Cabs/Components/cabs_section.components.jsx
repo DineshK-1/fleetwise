@@ -50,9 +50,8 @@ export default function CabsSection({ cabs_data }) {
               ref={nameRef}
               initial={{ opacity: 0, y: -100 }}
               animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.04 }}
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 150, damping: 12 }}
             />
             <motion.input
               type="search"
@@ -61,9 +60,8 @@ export default function CabsSection({ cabs_data }) {
               ref={idRef}
               initial={{ opacity: 0, y: -100 }}
               animate={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.04 }}
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 150, damping: 12 }}
             />
             <div className="add-cab-btn">
               <motion.div

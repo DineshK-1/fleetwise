@@ -58,7 +58,6 @@ export default function CreateCab({
           }
         }}
       >
-        {" "}
         + ADD CABS
       </div>
       {showModal && (
