@@ -33,58 +33,72 @@ export default function CabsSection({ cabs_data }) {
   };
 
   return (
-    <div
-      className="cabs-page"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <div className="search-cabs">
-        <div className="search-boxes">
-          <input
-            type="search"
-            className="search name-search"
-            placeholder="Filter by model (Dropdown)"
-            ref={nameRef}
-          />
-          <input
-            type="search"
-            className="search name-search"
-            placeholder="Search by reg number"
-            ref={idRef}
-          />
-          <div className="add-cab-btn">
-            <motion.div
-              initial={{ opacitx: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
+    <AnimatePresence>
+      <div
+        className="cabs-page"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <div className="search-cabs">
+          <div className="search-boxes">
+            <motion.input
+              type="search"
+              className="search name-search"
+              placeholder="Filter by model (Dropdown)"
+              ref={nameRef}
+              initial={{ opacity: 0, y: -100 }}
+              animate={{ opacity: 1, y: 0 }}
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.9 }}
               transition={{ type: "spring", stiffness: 150, damping: 12 }}
-              className="search-button"
-              onClick={handleSearch}
-            >
-              Search
-            </motion.div>
+            />
+            <motion.input
+              type="search"
+              className="search name-search"
+              placeholder="Search by reg number"
+              ref={idRef}
+              initial={{ opacity: 0, y: -100 }}
+              animate={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 150, damping: 12 }}
+            />
+            <div className="add-cab-btn">
+              <motion.div
+                initial={{ opacitx: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 150, damping: 12 }}
+                className="search-button"
+                onClick={handleSearch}
+              >
+                Search
+              </motion.div>
+            </div>
           </div>
         </div>
-        <CreateCab
-              setCabs={setCabs}
-              modalOccupied={modalOccupied}
-              setModalOccupied={setModalOccupied}
-            />
-      </div>
-      <div className="cab-cards">
-        {cabs.cabs.map((cab) => (
-          <CabCard
-            key={cab.id}
-            cab_id={cab.id}
-            reg_no={cab.cab_regno}
-            cab_model={cab.cab_model}
-            cab_color={cab.cab_color}
+        <div className="btn-and-card">
+          <CreateCab
+            setCabs={setCabs}
+            modalOccupied={modalOccupied}
+            setModalOccupied={setModalOccupied}
           />
-        ))}
+          <div className="cab-cards">
+            {cabs.cabs.map((cab) => (
+              <CabCard
+                key={cab.id}
+                cab_id={cab.id}
+                reg_no={cab.cab_regno}
+                cab_model={cab.cab_model}
+                cab_color={cab.cab_color}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </AnimatePresence>
   );
 }
