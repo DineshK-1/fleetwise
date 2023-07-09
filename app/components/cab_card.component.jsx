@@ -1,10 +1,9 @@
 "use client";
 import React, { useRef, useState } from "react";
-import cabimg from "../Cabs/cabpic.png";
+import cabimg from "@/public/cabpic.svg";
+import Image from "next/image";
 
 export default function CabCard({ cab_id, reg_no, cab_model, cab_color }) {
-  const [hover, setHover] = useState(false);
-
   const [updateModal, setUpdateModal] = useState(false);
 
   const model = useRef();
@@ -51,43 +50,26 @@ export default function CabCard({ cab_id, reg_no, cab_model, cab_color }) {
   return (
     <>
       <div>
-        <div
-          className="cab-container"
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-        >
-          <div
-            className="cab-img"
-            style={{
-              backgroundImage: `url(${cabimg.src})`,
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-              opacity: hover ? "0.85" : "1",
-              width: "200px",
-              height: "450px",
-              borderRadius: "10px",
-            }}
-          >
-            {hover && (
-              <div className="cab-info">
-                <div style={{ color: cab_color }} className="cab-info-text">
-                  <h3>{reg_no}</h3>
-                  <h3>{cab_model}</h3>
-                  <h3>{cab_color}</h3>
-                </div>
-                <div className="cab-info-del">
-                  <span
-                    class="material-icons-outlined"
-                    onClick={() => {
-                      setUpdateModal(true);
-                    }}
-                  >
-                    edit
-                  </span>
-                </div>
+        <div className="cab-container">
+          <div className="cab-img">
+            <div className="cab-info">
+              <div style={{ color: cab_color }} className="cab-info-text">
+                <h3>{reg_no}</h3>
+                <h3>{cab_model}</h3>
+                <h3>{cab_color}</h3>
               </div>
-            )}
+              <div className="cab-info-del">
+                <span
+                  class="material-icons-outlined"
+                  onClick={() => {
+                    setUpdateModal(true);
+                  }}
+                >
+                  edit
+                </span>
+              </div>
+              <Image src={cabimg} alt="cab" width={220} height={150} />
+            </div>
           </div>
         </div>
       </div>

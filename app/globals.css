@@ -4,14 +4,14 @@
   --text-color: #fff;
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   --background-color: #161618;
   --secondary-color: #212124;
   --text-color: #fff;
 }
 
-[data-theme='light'] {
-  --background-color: #E0E0E0;
+[data-theme="light"] {
+  --background-color: #e0e0e0;
   --secondary-color: #fafafa;
   --text-color: #000;
 }
@@ -204,11 +204,11 @@ a {
   transition: all 250ms;
 }
 
-.search-button{
-  padding: .8rem 1.5rem;
+.search-button {
+  padding: 0.8rem 1.5rem;
   background-color: var(--secondary-color);
   border-radius: 10px;
-  font-size: .8rem;
+  font-size: 0.8rem;
   width: fit-content;
 
   white-space: nowrap;
