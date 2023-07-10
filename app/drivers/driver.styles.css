@@ -88,9 +88,9 @@
   user-select: none;
 
   text-overflow: ellipsis;
-  overflow: hidden; 
+  overflow: hidden;
   white-space: nowrap;
-  width: auto; 
+  width: auto;
 
   transition: all 250ms;
 }
@@ -140,7 +140,7 @@
   width: 100%;
 }
 
-.search-drivers .buttons-section{
+.search-drivers .buttons-section {
   display: flex;
   align-items: center;
   gap: 20px;

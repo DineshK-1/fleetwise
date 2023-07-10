@@ -56,9 +56,9 @@ export default function CreateButton({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="driver-modal"
+            className="create-modal"
           >
-            <div className="driver-modal-content">
+            <div className="create-modal-content">
               <div className="top">
                 <h3>Add a driver</h3>
                 <div
