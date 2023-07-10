@@ -11,9 +11,9 @@
   "dependencies": {
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.6",
-    "framer-motion": "^10.12.16",
+    "framer-motion": "^10.12.18",
     "material-icons": "^1.13.8",
-    "next": "^13.4.7",
+    "next": "^13.4.9",
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
