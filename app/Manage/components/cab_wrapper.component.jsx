@@ -28,7 +28,7 @@ export default function CabWrapper({ cabs }) {
                         driver_name = driver.driver_first_name + " " + driver.driver_last_name
                         driver_id = driver.driver_ID
                     }
-                    if (cab_model.toLowerCase().includes(nameQuery.toLowerCase()) && cab_color.includes(colorQuery.toLowerCase()) && cab_regno.includes(idQuery)) {
+                    if (cab_model.toLowerCase().includes(nameQuery.toLowerCase()) && cab_color.toLowerCase().includes(colorQuery.toLowerCase()) && cab_regno.toLowerCase().includes(idQuery.toLowerCase())) {
                         return (
                             <ManageCabCard key={id} setCabs={setCabs} cab_id={id} cab_name={cab_model} color={cab_color} reg={cab_regno} driver_name={driver_name} driver_id={driver_id} />
                         )

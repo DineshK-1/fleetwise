@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Tooltip({ content, iscolor }) {
-  console.log(iscolor);
+  
   return (
     <div className="tooltip">
       <div

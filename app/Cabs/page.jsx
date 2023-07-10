@@ -1,5 +1,4 @@
 import "./cabs.styles.css";
-import CabCard from "../components/cab_card.component";
 import CabsSection from "./Components/cabs_section.components";
 
 async function getData() {

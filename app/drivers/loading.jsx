@@ -5,7 +5,7 @@ export default function Loading() {
         <div className="driver-section">
             <h2 className="w-500">Drivers Management</h2>
             <div className="driver-cards">
-                {[...Array(8)].map((e) => {
+                {[...Array(15)].map((e) => {
                     return (
                         <div key={e} className="driver-card">
                             <div className="card-top">

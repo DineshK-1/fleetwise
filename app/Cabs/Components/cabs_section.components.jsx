@@ -8,8 +8,9 @@ export default function CabsSection({ cabs_data }) {
   const [cabs, setCabs] = useState(cabs_data);
   const [modalOccupied, setModalOccupied] = useState(false);
 
-  const nameRef = useRef();
-  const idRef = useRef();
+  const [nameQuery, setNameQuery] = useState("");
+  const [colorQuery, setColorQuery] = useState("");
+  const [idQuery, setIDQuery] = useState("");
 
   const handleSearch = async () => {
     const resp = await fetch(process.env.NEXT_PUBLIC_API_HOST + "/get_cabs", {
@@ -55,23 +56,33 @@ export default function CabsSection({ cabs_data }) {
           <div className="search-boxes">
             <motion.input
               type="search"
-              className="search name-search"
-              placeholder="Filter by model (Dropdown)"
-              ref={nameRef}
-              initial={{ opacity: 0, y: -100 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="search cab-search"
+              placeholder="Filter by model name"
+              value={nameQuery} onChange={(e) => setNameQuery(e.target.value)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.9 }}
             />
             <motion.input
               type="search"
-              className="search name-search"
-              placeholder="Search by reg number"
-              ref={idRef}
-              initial={{ opacity: 0, y: -100 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="search cab-search"
+              placeholder="Search by Registeration Number"
+              value={idQuery} onChange={(e) => setIDQuery(e.target.value)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.9 }}
+            />
+            <motion.input
+              type="search"
+              className="search cab-search"
+              placeholder="Search by Color"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.9 }}
+              value={colorQuery} onChange={(e) => setColorQuery(e.target.value)}
             />
             <div className="add-cab-btn">
               <motion.div
@@ -96,19 +107,21 @@ export default function CabsSection({ cabs_data }) {
           />
           <div className="cab-cards">
             {cabs.cabs.map((cab, i) => {
-              return (
-                <CabCard
-                  key={i}
-                  cab_id={cab.id}
-                  reg_no={cab.cab_regno}
-                  cab_model={cab.cab_model}
-                  cab_color={cab.cab_color}
-                  driver={cab.driver}
-                  modalOccupied={modalOccupied}
-                  setModalOccupied={setModalOccupied}
-                  setCabs={setCabs}
-                />
-              );
+              if (cab.cab_model.toLowerCase().includes(nameQuery.toLowerCase()) && cab.cab_color.toLowerCase().includes(colorQuery.toLowerCase()) && cab.cab_regno.toLowerCase().includes(idQuery.toLowerCase())) {
+                return (
+                  <CabCard
+                    key={i}
+                    cab_id={cab.id}
+                    reg_no={cab.cab_regno}
+                    cab_model={cab.cab_model}
+                    cab_color={cab.cab_color}
+                    driver={cab.driver}
+                    modalOccupied={modalOccupied}
+                    setModalOccupied={setModalOccupied}
+                    setCabs={setCabs}
+                  />
+                );
+              }
             })}
           </div>
         </div>
