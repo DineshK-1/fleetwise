@@ -1,6 +1,5 @@
 "use client";
 import { useRef, useState } from "react";
-import "./create_driver.styles.css";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
