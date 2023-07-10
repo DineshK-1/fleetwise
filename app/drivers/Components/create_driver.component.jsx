@@ -90,7 +90,6 @@ export default function CreateButton({
                         damping: 10,
                       }}
                       type="text"
-                      defaultValue={"Meyenk"}
                       className="search search-alter"
                     />
                   </div>
@@ -105,7 +104,6 @@ export default function CreateButton({
                         damping: 10,
                       }}
                       type="text"
-                      defaultValue={"Rey"}
                       className="search search-alter"
                     />
                   </div>
@@ -120,7 +118,6 @@ export default function CreateButton({
                         damping: 10,
                       }}
                       type="number"
-                      defaultValue={69}
                       className="search search-alter"
                     />
                   </div>
@@ -135,7 +132,6 @@ export default function CreateButton({
                         damping: 10,
                       }}
                       type="email"
-                      defaultValue={"mk@gmail.com"}
                       className="search search-alter"
                     />
                   </div>
@@ -150,7 +146,6 @@ export default function CreateButton({
                         damping: 10,
                       }}
                       type="number"
-                      defaultValue={20}
                       className="search search-alter"
                     />
                   </div>

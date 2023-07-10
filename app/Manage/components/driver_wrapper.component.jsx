@@ -12,7 +12,7 @@ export default function DriverWrapper({ Drivers }) {
     return (
         <div className="drivers">
             <h3 className="w-500">Drivers</h3>
-            <div className="search-boxes">
+            <div className="search-boxes-mgmt">
                 <input type="text" value={nameQuery} onChange={(e) => setNameQuery(e.target.value)} className="search" placeholder="Search name here" />
                 <input type="number" value={idQuery} onChange={(e) => setIDQuery(e.target.value)} className="search" placeholder="Search ID here" />
             </div>
@@ -21,7 +21,7 @@ export default function DriverWrapper({ Drivers }) {
                 drivers.drivers.map((driver) => {
                     if ((driver.driver_first_name + " " + driver.driver_last_name).toLowerCase().includes(nameQuery.toLowerCase()) && driver.driver_ID.toString().includes(idQuery)) {
                         return (
-                            <DraggableDriver key={driver.id} driver_id={driver.id} first={"test"} second={`${driver.driver_first_name} ${driver.driver_last_name}`} third={driver.driver_ID} Draggable={true} />
+                            <DraggableDriver key={driver.id} driver_id={driver.id} cab={driver.cab} first={"test"} second={`${driver.driver_first_name} ${driver.driver_last_name}`} third={driver.driver_ID} Draggable={true} />
                         )
                     }
 

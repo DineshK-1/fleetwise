@@ -24,12 +24,14 @@ export default function ManageCabCard({ setCabs, cab_id, cab_name, reg, color, d
             if (res.detail) {
                 console.log("ERROR")
             } else {
-                console.log(res)
+                setName();
+                setID();
             }
         })
     }
 
     const handleDrop = async (event) => {
+        setUpdating(true);
         let res = await fetch(process.env.NEXT_PUBLIC_API_HOST + `/assign_cab?cab_id=${cab_id}&driver_id=${event.dataTransfer.getData("driver_id")}`, {
             method: "POST"
         }).then((res) => res.json()).then((res) => {
@@ -49,6 +51,8 @@ export default function ManageCabCard({ setCabs, cab_id, cab_name, reg, color, d
                 })
                 router.refresh();
             }
+        }).finally(() => {
+            setUpdating(false);
         })
     }
 
