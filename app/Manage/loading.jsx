@@ -5,6 +5,12 @@ export default function Loading() {
 
             <div className="manage-wrapper">
                 <div className="cabs">
+                    <h3 className="w-500">Cabs</h3>
+                    <div className="search-boxes-mgmt">
+                        <input type="text" className="search" placeholder="Search name here" />
+                        <input type="text" className="search" placeholder="Search ID here" />
+                        <input type="text" className="search" placeholder="Search by color here" />
+                    </div>
                     {[...Array(8)].map((e) => {
                         return (
                             <div key={e} className="cab-card">
