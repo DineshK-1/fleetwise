@@ -26,6 +26,7 @@ export default function ManageCabCard({ setCabs, cab_id, cab_name, reg, color, d
             } else {
                 setName();
                 setID();
+                router.refresh();
             }
         })
     }
