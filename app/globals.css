@@ -388,3 +388,51 @@ a {
   justify-content: center;
   gap: 10px;
 }
+
+.tag {
+  display: flex;
+  font-size: 12px;
+  padding: 5px 15px;
+  border-radius: 10px;
+  width: fit-content;
+  user-select: none;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: auto;
+
+  transition: all 250ms;
+}
+
+.tag.cab {
+  border: 2px solid #0048b5;
+}
+
+.tag.cab:hover {
+  background-color: #0048b560;
+}
+
+.tag.email {
+  border: 2px solid #5400b5;
+}
+
+.tag.email:hover {
+  background-color: #5400b560;
+}
+
+.tag.phone {
+  border: 2px solid #e80f88;
+}
+
+.tag.phone:hover {
+  background-color: #e80f8860;
+}
+
+.tag.since {
+  border: 2px solid #d5cea3;
+}
+
+.tag.since:hover {
+  background-color: #d5cea360;
+}
