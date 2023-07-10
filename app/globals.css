@@ -215,7 +215,6 @@ a {
   user-select: none;
   cursor: pointer;
 }
-
 .skeleton {
   opacity: .7;
   animation: skeleton-loading 1s linear infinite alternate;
@@ -235,4 +234,157 @@ a {
   100% {
     background-color: hsl(195, 4%, 22%);
   }
+}
+
+
+/* Update Modals */
+
+.update-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 12px;
+  z-index: 10;
+}
+
+.update-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.update-modal-content .fields form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.update-modal-content .fields form .field {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.search-alter {
+  background-color: var(--background-color) !important;
+}
+
+.update-modal-content .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-button {
+  display: flex;
+  width: fit-content;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 5px;
+  transition: background-color 200ms ease-in;
+}
+
+.close-button:hover {
+  background-color: var(--background-color);
+}
+
+.update-modal-content .submit {
+  display: flex;
+  align-self: center;
+  padding: 1rem;
+  background-color: var(--background-color);
+  width: fit-content;
+  border-radius: 10px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.submit.delete-button {
+  background-color: #ff6969;
+}
+
+.update-modal .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Create Modal */
+
+.create-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 12px;
+  z-index: 10;
+}
+
+.create-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.create-modal-content .fields form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.create-modal-content .fields form .field {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.search-alter {
+  background-color: var(--background-color) !important;
+}
+
+.create-modal-content .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-button {
+  display: flex;
+  width: fit-content;
+  user-select: none;
+  cursor: pointer;
+  border-radius: 12px;
+  padding: 5px;
+  transition: background-color 200ms ease-in;
+}
+
+.close-button:hover {
+  background-color: var(--background-color);
+}
+
+.create-modal-content .submit {
+  display: flex;
+  align-self: center;
+  padding: 1rem;
+  background-color: var(--background-color);
+  width: fit-content;
+  border-radius: 10px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.submit.delete-button {
+  background-color: #ff6969;
+}
+
+.create-modal-content .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
