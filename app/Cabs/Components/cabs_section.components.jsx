@@ -34,6 +34,14 @@ export default function CabsSection({ cabs_data }) {
 
   return (
     <AnimatePresence>
+      {modalOccupied && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="hide-background"
+        />
+      )}
       <div
         className="cabs-page"
         style={{
@@ -92,6 +100,9 @@ export default function CabsSection({ cabs_data }) {
                 reg_no={cab.cab_regno}
                 cab_model={cab.cab_model}
                 cab_color={cab.cab_color}
+                modalOccupied={modalOccupied}
+                setModalOccupied={setModalOccupied}
+                setCabs={setCabs}
               />
             ))}
           </div>

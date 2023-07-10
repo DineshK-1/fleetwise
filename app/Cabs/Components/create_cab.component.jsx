@@ -1,3 +1,4 @@
+"use client";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import React, { useRef, useState } from "react";
@@ -12,9 +13,11 @@ export default function CreateCab({
   const [showModal, setShowModal] = useState(false);
   const [creating, setCreating] = useState(false);
 
-  const model = useRef();
-  const color = useRef();
-  const regno = useRef();
+  const modelref = useRef();
+  const colorref = useRef();
+  const regnoref = useRef();
+
+  console.log(showModal);
 
   const handleSubmit = async () => {
     setCreating(true);
@@ -50,56 +53,125 @@ export default function CreateCab({
 
   return (
     <>
-      <div
-        className="add-cabs-btn"
-        onClick={() => {
-          if (!modalOccupied) {
-            setShowModal(true);
-          }
-        }}
-      >
-        + ADD CABS
-      </div>
-      {showModal && (
-        <div className="add-modal">
-          <div className="modal-header">
-            <h3>ADD CAB</h3>
-            <span
-              className="material-icons-outlined"
-              onClick={() => {
-                setShowModal(false);
-              }}
-            >
-              close
-            </span>
-          </div>
-          <div className="modal-body">
-            <form>
-              <div className="modal-inputs">
-                <label>Model:</label>
-                <input type="text" placeholder="Model" ref={model} />
-                <label>Color:</label>
-                <input type="text" placeholder="Color" ref={color} />
-                <label>Reg Number:</label>
-                <input
-                  type="text"
-                  placeholder="Registration Number"
-                  ref={regno}
-                />
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="create-modal"
+          >
+            <div className="create-modal-content">
+              <div className="top">
+                <h3>Add a Cab</h3>
+                <div
+                  className="close-button"
+                  onClick={() => {
+                    setShowModal(false);
+                    setModalOccupied(false);
+                  }}
+                >
+                  <span className="material-icons-outlined">close</span>
+                </div>
               </div>
-            </form>
-          </div>
-          <div className="modal-footer">
-            <button
-              className="create-btn"
-              onClick={handleSubmit}
-              disabled={creating ? true : false}
-            >
-              {creating ? "Creating Cab..." : "Create Cab"}
-            </button>
-          </div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fields"
+              >
+                <form>
+                  <div className="field">
+                    <label>Registration Number</label>
+                    <motion.input
+                      ref={regnoref}
+                      whileFocus={{ scale: 1.05 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10,
+                      }}
+                      type="text"
+                      className="search search-alter"
+                    />
+                  </div>
+                  <div className="field">
+                    <label>Model</label>
+                    <motion.input
+                      ref={modelref}
+                      whileFocus={{ scale: 1.05 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10,
+                      }}
+                      type="text"
+                      className="search search-alter"
+                    />
+                  </div>
+                  <div className="field">
+                    <label>Color</label>
+                    <motion.input
+                      ref={colorref}
+                      whileFocus={{ scale: 1.05 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10,
+                      }}
+                      type="text"
+                      className="search search-alter"
+                    />
+                  </div>
+                </form>
+              </motion.div>
+              <button
+                className="submit"
+                disabled={creating ? true : false}
+                onClick={handleSubmit}
+              >
+                {creating ? "Creating Cab..." : "Create Cab"}
+              </button>
+            </div>
+          </motion.div>
+        )}
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 200, damping: 10 }}
+          className="search-button"
+          style={{
+            backgroundColor: "yellow",
+            color: "black",
+            fontFamily: "sans-serif",
+            fontWeight: 600,
+          }}
+          onClick={() => {
+            if (modalOccupied) {
+              return null;
+            }
+            setShowModal(true);
+            setModalOccupied(true);
+          }}
+        >
+          + Create Cab
+        </motion.div>
+        <div
+          onClick={() => {
+            setModalOccupied(() => {
+              setShowModal(true);
+              return true;
+            });
+          }}
+        >
+          {" "}
+          HI
         </div>
-      )}
+      </AnimatePresence>
     </>
   );
 }
