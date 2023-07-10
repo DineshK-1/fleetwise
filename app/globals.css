@@ -216,7 +216,7 @@ a {
   cursor: pointer;
 }
 .skeleton {
-  opacity: .7;
+  opacity: 0.7;
   animation: skeleton-loading 1s linear infinite alternate;
 }
 
@@ -235,7 +235,6 @@ a {
     background-color: hsl(195, 4%, 22%);
   }
 }
-
 
 /* Update Modals */
 
@@ -387,4 +386,38 @@ a {
   display: flex;
   justify-content: center;
   gap: 10px;
+}
+
+/* Tooltip Styles */
+
+.tooltip {
+  position: relative;
+  left: 20px;
+  display: flex;
+  flex-direction: row;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.42857143;
+  text-align: left;
+  text-align: start;
+  text-shadow: none;
+  text-transform: none;
+  white-space: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  font-size: 12px;
+  display: inline-block;
+  bottom: 2px;
+}
+
+.tooltip .tooltip-inner {
+  max-width: 200px;
+  padding: 3px 8px;
+  color: #fff;
+  text-align: center;
+  background-color: #000;
+  border-radius: 4px;
 }
