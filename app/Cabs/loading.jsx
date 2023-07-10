@@ -21,7 +21,7 @@ export default function Loading() {
             <div className="loading-cabs">
                 {[...Array(15)].map((e) => {
                     return (
-                        <div className="cab-container">
+                        <div key={e} className="cab-container">
                             <div className="cab-info-top" style={{ width: "80%" }}>
                                 <span className="skeleton skeleton-text"></span>
                                 <span className="material-icons-outlined">edit</span>
