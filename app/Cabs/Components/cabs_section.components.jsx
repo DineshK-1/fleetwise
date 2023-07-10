@@ -103,12 +103,13 @@ export default function CabsSection({ cabs_data }) {
                   reg_no={cab.cab_regno}
                   cab_model={cab.cab_model}
                   cab_color={cab.cab_color}
+                  driver={cab.driver}
                   modalOccupied={modalOccupied}
                   setModalOccupied={setModalOccupied}
                   setCabs={setCabs}
-                />)
-            }
-            )}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

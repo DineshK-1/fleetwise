@@ -4,18 +4,21 @@ import cabimg from "@/public/cabpic.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import Tooltip from "./tooltip.component";
 
 export default function CabCard({
   cab_id,
   reg_no,
   cab_model,
   cab_color,
-  modalOccuoied,
+  driver,
+  modalOccupied,
   setModalOccupied,
   setCabs,
 }) {
   const router = useRouter();
   const [edit, setEdit] = useState(false);
+  const [colorHover, setColorHover] = useState(false);
 
   const modelref = useRef();
   const colorref = useRef();
@@ -88,6 +91,12 @@ export default function CabCard({
     setConfirmDelete(true);
   };
 
+  const isColor = (strColor) => {
+    var s = new Option().style;
+    s.color = strColor;
+    return s.color == strColor;
+  };
+
   return (
     <AnimatePresence>
       <div>
@@ -98,6 +107,7 @@ export default function CabCard({
               className="material-icons-outlined"
               onClick={() => {
                 setEdit(true);
+                setModalOccupied(true);
               }}
             >
               edit
@@ -114,12 +124,38 @@ export default function CabCard({
             <div className="bottom-text">
               <p>{cab_model}</p>
             </div>
-            <div className="bottom-color">
+            <div
+              className="bottom-color"
+              onMouseEnter={() => {
+                setColorHover(true);
+              }}
+              onMouseLeave={() => {
+                setColorHover(false);
+              }}
+            >
               <div
                 className="color-box"
-                style={{ backgroundColor: cab_color }}
-              ></div>
+                style={{
+                  backgroundColor: isColor(cab_color) ? cab_color : "#212124",
+                  border: isColor(cab_color)
+                    ? `1px solid ${cab_color}`
+                    : "1px dotted white",
+                  borderWidth: isColor(cab_color) ? "0px" : "2px",
+                }}
+              >
+                {colorHover && (
+                  <Tooltip content={cab_color} iscolor={isColor(cab_color)} />
+                )}
+              </div>
             </div>
+          </div>
+          <div className="cab-driver-link">
+            <span>
+              Driven by :{" "}
+              {driver !== null
+                ? driver.driver_first_name + " " + driver.driver_last_name
+                : "Not assigned"}
+            </span>{" "}
           </div>
         </div>
         {edit && (
