@@ -33,15 +33,17 @@ export default function CabsSection({ cabs_data }) {
   };
 
   return (
-    <AnimatePresence>
-      {modalOccupied && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="hide-background"
-        />
-      )}
+    <>
+      <AnimatePresence>
+        {modalOccupied && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="hide-background"
+          />
+        )}
+      </AnimatePresence>
       <div
         className="cabs-page"
         style={{
@@ -93,21 +95,23 @@ export default function CabsSection({ cabs_data }) {
             setModalOccupied={setModalOccupied}
           />
           <div className="cab-cards">
-            {cabs.cabs.map((cab) => (
-              <CabCard
-                key={cab.id}
-                cab_id={cab.id}
-                reg_no={cab.cab_regno}
-                cab_model={cab.cab_model}
-                cab_color={cab.cab_color}
-                modalOccupied={modalOccupied}
-                setModalOccupied={setModalOccupied}
-                setCabs={setCabs}
-              />
-            ))}
+            {cabs.cabs.map((cab, i) => {
+              return (
+                <CabCard
+                  key={i}
+                  cab_id={cab.id}
+                  reg_no={cab.cab_regno}
+                  cab_model={cab.cab_model}
+                  cab_color={cab.cab_color}
+                  modalOccupied={modalOccupied}
+                  setModalOccupied={setModalOccupied}
+                  setCabs={setCabs}
+                />)
+            }
+            )}
           </div>
         </div>
       </div>
-    </AnimatePresence>
+    </>
   );
 }

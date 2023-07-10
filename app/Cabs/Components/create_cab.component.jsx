@@ -17,13 +17,24 @@ export default function CreateCab({
   const colorref = useRef();
   const regnoref = useRef();
 
-  console.log(showModal);
+  const handleCreateCab = () => {
+    if (modalOccupied) {
+      return null;
+    }
+    setModalOccupied(true);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setModalOccupied(false);
+  };
 
   const handleSubmit = async () => {
     setCreating(true);
     const resp = await fetch(
       process.env.NEXT_PUBLIC_API_HOST +
-        `/create_cab?model=${model.current.value}&color=${color.current.value}&regno=${regno.current.value}`,
+        `/create_cab?model=${modelref.current.value}&color=${colorref.current.value}&regno=${regnoref.current.value}`,
       {
         method: "POST",
       }
@@ -53,9 +64,25 @@ export default function CreateCab({
 
   return (
     <>
-      <AnimatePresence>
+        <div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 200, damping: 10 }}
+          className="search-button"
+          style={{
+            backgroundColor: "yellow",
+            color: "black",
+            fontFamily: "sans-serif",
+            fontWeight: 600,
+          }}
+          onClick={handleCreateCab}>
+          + Create Cab
+        </div>
+
         {showModal && (
-          <motion.div
+          <div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -134,44 +161,8 @@ export default function CreateCab({
                 {creating ? "Creating Cab..." : "Create Cab"}
               </button>
             </div>
-          </motion.div>
+          </div>
         )}
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.9 }}
-          transition={{ type: "spring", stiffness: 200, damping: 10 }}
-          className="search-button"
-          style={{
-            backgroundColor: "yellow",
-            color: "black",
-            fontFamily: "sans-serif",
-            fontWeight: 600,
-          }}
-          onClick={() => {
-            if (modalOccupied) {
-              return null;
-            }
-            setShowModal(true);
-            setModalOccupied(true);
-          }}
-        >
-          + Create Cab
-        </motion.div>
-        <div
-          onClick={() => {
-            setModalOccupied(() => {
-              setShowModal(true);
-              return true;
-            });
-          }}
-        >
-          {" "}
-          HI
-        </div>
-      </AnimatePresence>
     </>
   );
 }

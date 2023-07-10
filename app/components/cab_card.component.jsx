@@ -41,7 +41,7 @@ export default function CabCard({
         } else {
           setCabs((cabs) => {
             let temp = [...cabs.cabs];
-            let index = temp.findIndex((ele) => ele.cab_id === cab_id);
+            let index = temp.findIndex((ele) => ele.id === cab_id);
             temp[index] = res;
             return { cabs: temp };
           });
