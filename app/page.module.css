@@ -1,0 +1,21 @@
+.landing-frames {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  background-color: #f5f5f5;
+}
+
+.cabs-flex {
+  display: flex;
+  flex-direction: column;
+  width: 1440px;
+  height: 1024px;
+}
+
+.cabs-flex .header h2 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  font-size: 360px;
+}
