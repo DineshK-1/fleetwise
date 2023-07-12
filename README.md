@@ -1,22 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FleetWise
 
-## Getting Started
+A Next.js framework based web application for cab vehicle and and driver management. Created for the 2023 AFourathon 3.0. Deployed on vercel at fleetwise.vercel.app . Runs using a self-created API made using FastAPI + Postgres. Deployable on Docker
 
-First, run the development server:
+
+## Authors
+
+- [@DineshK-1](https://www.github.com/octokatherine)
+- [@Overthinkr](https://www.github.com/Overthinkr)
+
+
+## Lessons Learned
+
+
+
+
+## Deployment
+
+To deploy this project locally run (using vercel)
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+  npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To deploy this project using Docker
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Features
+
+- Light/dark mode toggle
+- Add/Modify/Delete Cabs
+- Add/Modify/Delete Drivers
+- Link Cabs to Drivers
+- Seamless search bars
+
+
+
+## Related
+
+Here is the relevant API repo [FleetWise API](https://github.com/DineshK-1/fleet-wise-api)
+
 
 ## Learn More
 
@@ -26,9 +50,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
