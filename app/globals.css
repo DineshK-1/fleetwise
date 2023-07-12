@@ -191,7 +191,7 @@ a {
 }
 
 .landing-frames div.container {
-  padding: .5rem;
+  padding: 0.5rem;
   height: 100vh !important;
   overflow: hidden;
 }
@@ -223,7 +223,7 @@ a {
   color: #00adb5;
 }
 
-.deets-one{
+.deets-one {
   font-size: 1.5rem;
 }
 
@@ -242,12 +242,16 @@ a {
   flex: 1 1 0;
 }
 
-.deets-three{
+.deets-three {
   font-size: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   padding-top: 3rem;
+}
+
+.deets-three span {
+  font-size: 23px;
 }
 
 .relations-flex {
