@@ -3,6 +3,19 @@ import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
+/**
+ * CreateButton Component
+ *
+ * The CreateButton component is a React component that displays a button for creating a new driver.
+ * When clicked, the button opens a modal with input fields for entering the driver's information.
+ * The modal allows the user to submit the form to create a new driver with the entered information.
+ *
+ * @param {Object} setDrivers - A function to update the driver list after creating a new driver.
+ * @param {boolean} modalOccupied - A boolean indicating if the modal is occupied by other actions.
+ * @param {Function} setModalOccupied - A function to set the state of modalOccupied.
+ * @returns {JSX.Element} The JSX representation of the CreateButton component.
+ */
+
 export default function CreateButton({
   setDrivers,
   modalOccupied,
@@ -19,6 +32,14 @@ export default function CreateButton({
   const idRef = useRef();
   const phoneRef = useRef();
 
+  /**
+   * handleSubmit function
+   *
+   * This function is called when the user submits the form in the modal.
+   * It sends a request to the API to create a new driver with the entered information.
+   * After successfully creating the driver, it updates the driver list and refreshes the page.
+   *
+   */
   const handleSubmit = async () => {
     setCreating(true);
     const resp = await fetch(

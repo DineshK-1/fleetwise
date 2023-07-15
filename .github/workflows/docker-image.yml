@@ -2,28 +2,33 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
-
   build:
     name: Build and push docker image to dockerhub.
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Login to dockerhub
-      uses: docker/login-action@v2
-      with:
+      - uses: actions/checkout@v3
+      # Step: Checkout the source code from the repository.
+      - name: Login to dockerhub
+        uses: docker/login-action@v2
+        with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-    
-    - name: Push to dockerhub
-      uses: docker/build-push-action@v4
-      with:
+          # Step: Login to Docker Hub using the provided Docker Hub credentials
+          # (DOCKERHUB_USERNAME and DOCKERHUB_PASSWORD are secrets).
+
+      - name: Push to dockerhub
+        uses: docker/build-push-action@v4
+        with:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/fleetwise:latest
+          tags:
+            ${{ secrets.DOCKERHUB_USERNAME }}/fleetwise:latest
+            #Step: Build the Docker image from the Dockerfile in the repository root
+            # and push it to Docker Hub using the specified tag.

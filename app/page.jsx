@@ -4,8 +4,17 @@ import Image from "next/image";
 import CabImage from "@/public/CabsPage.png";
 import DriversImage from "@/public/DriversPage.png";
 import ManagementImage from "@/public/ManagementPage.png";
-
 import { motion } from "framer-motion";
+
+/**
+ * Home Component
+ *
+ * This component represents the landing page of FleetWise.
+ *
+ * It showcases images related to cabs, drivers, and business management in the website.=
+ *
+ * @returns {JSX.Element} The JSX of Home component.
+ */
 
 export default function Home() {
   return (

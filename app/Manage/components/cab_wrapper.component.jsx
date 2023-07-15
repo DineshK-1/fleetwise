@@ -3,6 +3,17 @@
 import { useState } from "react";
 import ManageCabCard from "./manage_cab_card.component";
 
+/**
+ * CabWrapper Component
+ *
+ * The CabWrapper component is a React component that renders a list of cabs and allows users to search for cabs based on their model, color, and registration number.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.cabs - An object containing the list of cabs.
+ * @param {function} props.setCabs - A function to set the state of the cabs.
+ *
+ * @returns {JSX.Element} The JSX representation of the CabWrapper component.
+ */
 export default function CabWrapper({ cabs }) {
   const [cabbies, setCabs] = useState(cabs);
 

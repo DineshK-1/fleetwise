@@ -6,6 +6,23 @@ import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Tooltip from "./tooltip.component";
 
+/**
+ * CabCard Component
+ *
+ * The CabCard component represents a card displaying information about a cab. Users can edit cab details and retire the cab by clicking on the "edit" and "retire" buttons, respectively. It also uses the Tooltip component to display additional information when the mouse hovers over the color box.
+ *
+ * @param {object} props - The properties of the CabCard component.
+ * @param {string} props.cab_id - The ID of the cab.
+ * @param {string} props.reg_no - The registration number of the cab.
+ * @param {string} props.cab_model - The model of the cab.
+ * @param {string} props.cab_color - The color of the cab.
+ * @param {object|null} props.driver - The driver information of the cab (null if not assigned).
+ * @param {boolean} props.modalOccupied - A boolean to check if a modal is already occupied.
+ * @param {function} props.setModalOccupied - A function to set the modal occupancy state.
+ * @param {function} props.setCabs - A function to set the state of the cab list.
+ *
+ * @returns {JSX.Element} The JSX representation of the CabCard component.
+ */
 export default function CabCard({
   cab_id,
   reg_no,
@@ -92,6 +109,8 @@ export default function CabCard({
   };
 
   const isColor = (strColor) => {
+    //Created to check if the color is a valid displayable color in css
+    //Left incomplete temporarily to figure out best option
     return true;
   };
 

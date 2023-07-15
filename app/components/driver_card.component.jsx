@@ -6,6 +6,25 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 
+/**
+ * DriverCard Component
+ *
+ * The DriverCard component represents a card that displays driver information, including the driver's name, ID, email, phone number, and details about the assigned cab (if any). The card also provides options to edit or delete the driver's information.
+ *
+ * @param {Object} props - The props passed to the DriverCard component.
+ * @param {string} props.primary_id - The primary ID of the driver.
+ * @param {string} props.first_name - The first name of the driver.
+ * @param {string} props.last_name - The last name of the driver.
+ * @param {string} props.ID - The ID of the driver.
+ * @param {string} props.email - The email of the driver.
+ * @param {string} props.phone - The phone number of the driver.
+ * @param {string} props.created_date - The date when the driver started driving.
+ * @param {Object} props.cab - The details of the cab assigned to the driver (if any).
+ * @param {Function} props.setModalOccupied - A function to set the modalOccupied state in the parent component.
+ * @param {boolean} props.modalOccupied - A boolean to indicate whether the modal is occupied.
+ * @param {Function} props.setDrivers - A function to set the drivers state in the parent component.
+ * @returns {JSX.Element} The JSX representation of the DriverCard component.
+ */
 export default function DriverCard({
   primary_id,
   first_name,

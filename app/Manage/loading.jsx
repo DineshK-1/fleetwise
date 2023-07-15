@@ -1,41 +1,67 @@
+/**
+ * Loading Component
+ *
+ * The Loading component is a React component that represents a loading placeholder UI for the "Cab-Driver Relations" management page.
+ * It includes placeholders for the "Cabs" and "Drivers" sections, and each section has search boxes and skeleton elements to simulate loading.
+ *
+ * @returns {JSX.Element} The JSX representation of the Loading component.
+ */
 export default function Loading() {
-    return (
-        <div className="manage-page">
-            <h2 className="w-500">Cab-Driver Relations</h2>
+  return (
+    <div className="manage-page">
+      <h2 className="w-500">Cab-Driver Relations</h2>
 
-            <div className="manage-wrapper">
-                <div className="cabs">
-                    <h3 className="w-500">Cabs</h3>
-                    <div className="search-boxes-mgmt">
-                        <input type="text" className="search" placeholder="Search name here" />
-                        <input type="text" className="search" placeholder="Search ID here" />
-                        <input type="text" className="search" placeholder="Search by color here" />
-                    </div>
-                    {[...Array(8)].map((e) => {
-                        return (
-                            <div key={e} className="cab-card">
-                                <span className="skeleton skeleton-text"></span>
-                                <span className="skeleton skeleton-text"></span>
-                                <span className="skeleton skeleton-text"></span>
-                                <hr className="divider" />
-                                <span className="skeleton skeleton-text"></span>
-                            </div>
-                        )
-                    })}
-                </div>
-                <div className="drivers">
-                    <h3 className="w-500">Drivers</h3>
-                    <div className="search-boxes">
-                        <input type="text" className="search" placeholder="Search name here" />
-                        <input type="number" className="search" placeholder="Search ID here" />
-                    </div>
-                    {[...Array(20)].map((e) => {
-                        return (
-                            <span key={e} className="skeleton skeleton-text"></span>
-                        )
-                    })}
-                </div>
-            </div>
+      <div className="manage-wrapper">
+        <div className="cabs">
+          <h3 className="w-500">Cabs</h3>
+          <div className="search-boxes-mgmt">
+            <input
+              type="text"
+              className="search"
+              placeholder="Search name here"
+            />
+            <input
+              type="text"
+              className="search"
+              placeholder="Search ID here"
+            />
+            <input
+              type="text"
+              className="search"
+              placeholder="Search by color here"
+            />
+          </div>
+          {[...Array(8)].map((e) => {
+            return (
+              <div key={e} className="cab-card">
+                <span className="skeleton skeleton-text"></span>
+                <span className="skeleton skeleton-text"></span>
+                <span className="skeleton skeleton-text"></span>
+                <hr className="divider" />
+                <span className="skeleton skeleton-text"></span>
+              </div>
+            );
+          })}
         </div>
-    )
+        <div className="drivers">
+          <h3 className="w-500">Drivers</h3>
+          <div className="search-boxes">
+            <input
+              type="text"
+              className="search"
+              placeholder="Search name here"
+            />
+            <input
+              type="number"
+              className="search"
+              placeholder="Search ID here"
+            />
+          </div>
+          {[...Array(20)].map((e) => {
+            return <span key={e} className="skeleton skeleton-text"></span>;
+          })}
+        </div>
+      </div>
+    </div>
+  );
 }

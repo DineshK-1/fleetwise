@@ -5,12 +5,32 @@ import { useRef, useState } from "react";
 import CreateButton from "./create_driver.component";
 import { motion, AnimatePresence } from "framer-motion";
 
+/**
+ * DriversSection Component
+ *
+ * The DriversSection component is a React component that displays a section for managing drivers.
+ * It renders a search bar to filter drivers, a list of driver cards, and a create button to add new drivers.
+ * The driver cards are displayed using data fetched from an API.
+ *
+ * @param {Object} drivers_data - The data containing the list of drivers to be displayed.
+ * @returns {JSX.Element} The JSX representation of the DriversSection component.
+ */
+
 export default function DriversSection({ drivers_data }) {
   const [drivers, setDrivers] = useState(drivers_data);
   const [modalOccupied, setModalOccupied] = useState(false);
 
   const nameRef = useRef();
   const idRef = useRef();
+
+  /**
+   * handleSearch function
+   *
+   * This function is called when the search button is clicked.
+   * It fetches the drivers based on the search criteria provided in the search bar inputs.
+   * The fetched drivers are then set in the component's state to update the driver list.
+   *
+   */
 
   const handleSearch = async () => {
     const resp = await fetch(

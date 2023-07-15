@@ -4,7 +4,23 @@ import React, { useRef, useState } from "react";
 import CabCard from "@/app/components/cab_card.component";
 import CreateCab from "./create_cab.component";
 
+/**
+ * CabsSection Component
+ *
+ * The CabsSection component is a React component that displays a section for managing cabs.
+ * It allows users to search and filter cab data based on model name, registration number, and color.
+ *
+ * This component receives the `cabs_data` prop, which contains an object with cabs data from the API.
+ * It uses the Framer Motion library for animations on input boxes and search button interactions.
+ *
+ * The `CabsSection` component also includes the `CreateCab` component, which allows users to create new cabs.
+ *
+ * @param {Object} cabs_data - An object containing cabs data from the FleetWise API.
+ * @returns {JSX.Element} The JSX representation of the CabsSection component.
+ */
+
 export default function CabsSection({ cabs_data }) {
+  // State to hold the cabs data
   const [cabs, setCabs] = useState(cabs_data);
   const [modalOccupied, setModalOccupied] = useState(false);
 
@@ -12,6 +28,7 @@ export default function CabsSection({ cabs_data }) {
   const [colorQuery, setColorQuery] = useState("");
   const [idQuery, setIDQuery] = useState("");
 
+  //function to handle search operations
   const handleSearch = async () => {
     const resp = await fetch(process.env.NEXT_PUBLIC_API_HOST + "/get_cabs", {
       method: "POST",
@@ -58,7 +75,8 @@ export default function CabsSection({ cabs_data }) {
               type="search"
               className="search cab-search"
               placeholder="Filter by model name"
-              value={nameQuery} onChange={(e) => setNameQuery(e.target.value)}
+              value={nameQuery}
+              onChange={(e) => setNameQuery(e.target.value)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               whileHover={{ scale: 1.02 }}
@@ -68,7 +86,8 @@ export default function CabsSection({ cabs_data }) {
               type="search"
               className="search cab-search"
               placeholder="Search by Registeration Number"
-              value={idQuery} onChange={(e) => setIDQuery(e.target.value)}
+              value={idQuery}
+              onChange={(e) => setIDQuery(e.target.value)}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               whileHover={{ scale: 1.02 }}
@@ -82,7 +101,8 @@ export default function CabsSection({ cabs_data }) {
               animate={{ opacity: 1 }}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.9 }}
-              value={colorQuery} onChange={(e) => setColorQuery(e.target.value)}
+              value={colorQuery}
+              onChange={(e) => setColorQuery(e.target.value)}
             />
             <div className="add-cab-btn">
               <motion.div
@@ -107,7 +127,13 @@ export default function CabsSection({ cabs_data }) {
           />
           <div className="cab-cards">
             {cabs.cabs.map((cab, i) => {
-              if (cab.cab_model.toLowerCase().includes(nameQuery.toLowerCase()) && cab.cab_color.toLowerCase().includes(colorQuery.toLowerCase()) && cab.cab_regno.toLowerCase().includes(idQuery.toLowerCase())) {
+              if (
+                cab.cab_model.toLowerCase().includes(nameQuery.toLowerCase()) &&
+                cab.cab_color
+                  .toLowerCase()
+                  .includes(colorQuery.toLowerCase()) &&
+                cab.cab_regno.toLowerCase().includes(idQuery.toLowerCase())
+              ) {
                 return (
                   <CabCard
                     key={i}
