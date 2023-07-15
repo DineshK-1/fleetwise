@@ -5,27 +5,15 @@ A Next.js framework based web application for cab vehicle and and driver managem
 
 ## Authors
 
-- [@DineshK-1](https://www.github.com/octokatherine)
+- [@DineshK-1](https://www.github.com/DineshK-1)
 - [@Overthinkr](https://www.github.com/Overthinkr)
-
-
-## Lessons Learned
-
-
-
 
 ## Deployment
 
-To deploy this project locally run (using vercel)
+To deploy this project using Docker, Download image from Dockerhub 
+[Dockerhub Fleetwise Image](https://hub.docker.com/r/dinesheth/fleetwise)
 
-```bash
-  npm run dev
-```
-
-To deploy this project using Docker
-
-```bash
-```
+[Link to our Google Cloud run instance](https://fleetwise-wtuutl2vtq-el.a.run.app)
 
 ## Features
 
