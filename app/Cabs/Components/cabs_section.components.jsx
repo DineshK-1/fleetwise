@@ -1,8 +1,9 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import CabCard from "@/app/components/cab_card.component";
 import CreateCab from "./create_cab.component";
+import { ErrorContext } from "@/app/components/errorContext";
 
 /**
  * CabsSection Component
@@ -27,28 +28,6 @@ export default function CabsSection({ cabs_data }) {
   const [nameQuery, setNameQuery] = useState("");
   const [colorQuery, setColorQuery] = useState("");
   const [idQuery, setIDQuery] = useState("");
-
-  //function to handle search operations
-  const handleSearch = async () => {
-    const resp = await fetch(process.env.NEXT_PUBLIC_API_HOST + "/get_cabs", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: nameRef.current.value,
-        ID: parseInt(idRef.current.value),
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.detail) {
-          console.log("ERROR");
-        } else if (res.cabs) {
-          setCabs(res);
-        }
-      });
-  };
 
   return (
     <>
@@ -104,19 +83,6 @@ export default function CabsSection({ cabs_data }) {
               value={colorQuery}
               onChange={(e) => setColorQuery(e.target.value)}
             />
-            <div className="add-cab-btn">
-              <motion.div
-                initial={{ opacitx: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.9 }}
-                transition={{ type: "spring", stiffness: 150, damping: 12 }}
-                className="search-button"
-                onClick={handleSearch}
-              >
-                Search
-              </motion.div>
-            </div>
           </div>
         </div>
         <div className="btn-and-card">

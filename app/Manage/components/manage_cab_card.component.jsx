@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import DraggableDriver from "./draggable_driver.component";
 import { useRouter } from "next/navigation";
+import { ErrorContext } from "@/app/components/errorContext";
 
 /**
  * ManageCabCard Component
@@ -37,6 +38,8 @@ export default function ManageCabCard({
 
   const [updating, setUpdating] = useState(false);
 
+  let { setErrors } = useContext(ErrorContext);
+
   useEffect(() => {
     // Update the name and ID state when the driver_name and driver_id props change
     setName(driver_name);
@@ -55,7 +58,9 @@ export default function ManageCabCard({
       .then((res) => res.json())
       .then((res) => {
         if (res.detail) {
-          console.log("ERROR");
+          setErrors((e) => {
+            return [...e, "Error Deleting Driver"]
+          })
         } else {
           setName();
           setID();
@@ -69,9 +74,7 @@ export default function ManageCabCard({
     setUpdating(true);
     let res = await fetch(
       process.env.NEXT_PUBLIC_API_HOST +
-        `/assign_cab?cab_id=${cab_id}&driver_id=${event.dataTransfer.getData(
-          "driver_id"
-        )}`,
+        `/assign_cab?cab_id=${cab_id}&driver_id=${event.dataTransfer.getData("driver_id")}`,
       {
         method: "POST",
       }
@@ -79,7 +82,9 @@ export default function ManageCabCard({
       .then((res) => res.json())
       .then((res) => {
         if (res.detail) {
-          console.log("ERROR");
+          setErrors((e) => {
+            return [...e, res.detail]
+          })
         } else {
           setCabs(({ cabs }) => {
             let tempArray = [...cabs];

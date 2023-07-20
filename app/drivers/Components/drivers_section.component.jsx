@@ -1,9 +1,10 @@
 "use client";
 
 import DriverCard from "@/app/components/driver_card.component";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import CreateButton from "./create_driver.component";
 import { motion, AnimatePresence } from "framer-motion";
+import { ErrorContext } from "@/app/components/errorContext";
 
 /**
  * DriversSection Component
@@ -22,6 +23,8 @@ export default function DriversSection({ drivers_data }) {
 
   const nameRef = useRef();
   const idRef = useRef();
+
+  let { setErrors } = useContext(ErrorContext);
 
   /**
    * handleSearch function
@@ -49,7 +52,9 @@ export default function DriversSection({ drivers_data }) {
       .then((res) => res.json())
       .then((res) => {
         if (res.detail) {
-          console.log("ERROR");
+          setErrors((e) => {
+            return [...e, "Error Fetching Drivers"]
+          })
         } else if (res.drivers) {
           setDrivers(res);
         }

@@ -40,9 +40,6 @@ export default function Loading() {
             className="search cab-search"
             placeholder="Search by Color"
           />
-          <div className="add-cab-btn">
-            <div className="search-button">Search</div>
-          </div>
         </div>
       </div>
       <div className="loading-cabs">

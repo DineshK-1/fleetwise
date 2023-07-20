@@ -3,6 +3,7 @@ import { Raleway } from "next/font/google";
 import "material-icons/iconfont/outlined.css";
 import Sidebar from "./components/Sidebar.component";
 import { Providers } from "./providers";
+import { ErrorProviders } from "./components/errorContext";
 
 // Raleway font is imported and used as a global style.
 const raleway = Raleway({ subsets: ["latin"] });
@@ -33,8 +34,11 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <body className={raleway.className}>
         <Providers>
-          <Sidebar />
-          <div className="main-wrapper">{children}</div>
+          <ErrorProviders>
+            <Sidebar />
+            <div className="main-wrapper">{children}</div>
+          </ErrorProviders>
+
         </Providers>
       </body>
     </html>

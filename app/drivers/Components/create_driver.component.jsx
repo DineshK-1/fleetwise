@@ -1,7 +1,8 @@
 "use client";
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { ErrorContext } from "@/app/components/errorContext";
 
 /**
  * CreateButton Component
@@ -32,6 +33,8 @@ export default function CreateButton({
   const idRef = useRef();
   const phoneRef = useRef();
 
+  let { setErrors } = useContext(ErrorContext);
+
   /**
    * handleSubmit function
    *
@@ -52,7 +55,13 @@ export default function CreateButton({
       .then((res) => res.json())
       .then((res) => {
         if (res.detail) {
-          console.log("ERROR");
+          console.log(res.detail)
+          setErrors((e) => {
+            if(res.detail[0]){
+              return [...e, "Fill the fields properly"]
+            }
+            return [...e, res.detail]
+          })
         } else {
           setDrivers((drivers) => {
             let tempArray = [...drivers.drivers, res];

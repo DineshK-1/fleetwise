@@ -575,3 +575,20 @@ a {
 .tag.since:hover {
   background-color: #d5cea360;
 }
+
+.error-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 9999;
+}
+.error-container .error-object {
+  background-color: #D22B2B;
+  padding: .5rem 1rem;
+  border-radius: 8px;
+}

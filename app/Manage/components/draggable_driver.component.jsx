@@ -32,8 +32,6 @@ export default function DraggableDriver({
 }) {
   const handleOnDrag = (event) => {
     event.dataTransfer.setData("driver_id", driver_id);
-    event.dataTransfer.setData("widgetName", second);
-    event.dataTransfer.setData("widgetID", third);
   };
 
   return (

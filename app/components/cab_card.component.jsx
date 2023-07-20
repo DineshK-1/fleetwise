@@ -1,10 +1,11 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import cabimg from "@/public/cabpic.svg";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import Tooltip from "./tooltip.component";
+import { ErrorContext } from "./errorContext";
 
 /**
  * CabCard Component
@@ -45,11 +46,13 @@ export default function CabCard({
 
   const [confirmDelete, setConfirmDelete] = useState(false);
 
+  let { setErrors } = useContext(ErrorContext);
+
   const handleEdit = async () => {
     setEditing(true);
     const resp = await fetch(
       process.env.NEXT_PUBLIC_API_HOST +
-        `/update_cab?id=${cab_id}&model=${modelref.current.value}&color=${colorref.current.value}&regno=${regnoref.current.value}`,
+      `/update_cab?id=${cab_id}&model=${modelref.current.value}&color=${colorref.current.value}&regno=${regnoref.current.value}`,
       {
         method: "PUT",
       }
@@ -57,7 +60,9 @@ export default function CabCard({
       .then((res) => res.json())
       .then((res) => {
         if (res.detail) {
-          console.log("ERROR");
+          setErrors((e) => {
+            return [...e, res.detail]
+          })
         } else {
           setCabs((cabs) => {
             let temp = [...cabs.cabs];
@@ -86,7 +91,9 @@ export default function CabCard({
         .then((res) => res.json())
         .then((res) => {
           if (res.detail) {
-            console.log("ERROR");
+            setErrors((e) => {
+              return [...e, res.detail]
+            })
           } else if (res.deleted == true) {
             setCabs((cabs) => {
               let temp = [...cabs.cabs];
@@ -179,6 +186,9 @@ export default function CabCard({
             </span>{" "}
           </div>
         </div>
+
+
+
         {edit && (
           <motion.div
             initial={{ opacity: 0 }}

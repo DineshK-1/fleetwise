@@ -1,7 +1,8 @@
 "use client";
+import { ErrorContext } from "@/app/components/errorContext";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import React, { useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 /**
  * CreateCab Component
@@ -35,6 +36,8 @@ export default function CreateCab({
   const colorref = useRef();
   const regnoref = useRef();
 
+  let { setErrors } = useContext(ErrorContext);
+
   // Function to handle the click event on the "+ Create Cab" button
   const handleCreateCab = () => {
     if (modalOccupied) {
@@ -49,7 +52,7 @@ export default function CreateCab({
     setCreating(true);
     const resp = await fetch(
       process.env.NEXT_PUBLIC_API_HOST +
-        `/create_cab?model=${modelref.current.value}&color=${colorref.current.value}&regno=${regnoref.current.value}`,
+      `/create_cab?model=${modelref.current.value}&color=${colorref.current.value}&regno=${regnoref.current.value}`,
       {
         method: "POST",
       }
@@ -57,7 +60,9 @@ export default function CreateCab({
       .then((res) => res.json())
       .then((res) => {
         if (res.detail) {
-          console.log("ERROR");
+          setErrors((e) => {
+            return [...e, res.detail]
+          })
         } else {
           setCabs((cabs) => {
             let temp = [...cabs.cabs, res];
@@ -79,7 +84,7 @@ export default function CreateCab({
 
   return (
     <>
-      <div
+      <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         whileHover={{ scale: 1.04 }}
@@ -95,7 +100,7 @@ export default function CreateCab({
         onClick={handleCreateCab}
       >
         + Create Cab
-      </div>
+      </motion.div>
 
       {showModal && (
         <div

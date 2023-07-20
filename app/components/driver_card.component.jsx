@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import "../drivers/driver.styles.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
+import { ErrorContext } from "./errorContext";
 
 /**
  * DriverCard Component
@@ -51,11 +52,13 @@ export default function DriverCard({
 
   const [confirmDelete, setConfirmDelete] = useState(false);
 
+  let { setErrors } = useContext(ErrorContext);
+
   const handleEdit = async () => {
     setEditing(true);
     const resp = await fetch(
       process.env.NEXT_PUBLIC_API_HOST +
-        `/update_driver?id=${primary_id}&first_name=${firstNameRef.current.value}&last_name=${lastNameRef.current.value}&ID=${idRef.current.value}&email=${emailRef.current.value}&phone=${phoneRef.current.value}`,
+      `/update_driver?id=${primary_id}&first_name=${firstNameRef.current.value}&last_name=${lastNameRef.current.value}&ID=${idRef.current.value}&email=${emailRef.current.value}&phone=${phoneRef.current.value}`,
       {
         method: "PUT",
       }
@@ -63,7 +66,9 @@ export default function DriverCard({
       .then((res) => res.json())
       .then((res) => {
         if (res.detail) {
-          console.log("ERROR");
+          setErrors((e) => {
+            return [...e, res.detail]
+          })
         } else {
           setDrivers((drivers) => {
             let tempArray = [...drivers.drivers];
@@ -92,7 +97,9 @@ export default function DriverCard({
         .then((res) => res.json())
         .then((res) => {
           if (res.detail) {
-            console.log("ERROR");
+            setErrors((e) => {
+              return [...e, res.detail]
+            })
           } else if (res.deleted == true) {
             setDrivers((drivers) => {
               let tempArray = [...drivers.drivers];
@@ -170,6 +177,8 @@ export default function DriverCard({
           <div className="phone tag">{phone}</div>
         </div>
       </motion.div>
+
+
       <AnimatePresence>
         {edit && (
           <motion.div
