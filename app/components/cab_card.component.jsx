@@ -120,15 +120,19 @@ export default function CabCard({
         <div className="cab-container">
           <div className="cab-info-top">
             <p>{reg_no}</p>
-            <span
-              className="material-icons-outlined"
-              onClick={() => {
-                setEdit(true);
-                setModalOccupied(true);
-              }}
-            >
-              edit
-            </span>
+            <div className="action-buttons">
+              <div className="edit-button">
+                <span
+                  className="material-icons-outlined"
+                  onClick={() => {
+                    setEdit(true);
+                    setModalOccupied(true);
+                  }}
+                >
+                  edit
+                </span>
+              </div>
+            </div>
           </div>
           <motion.div
             className="cab-img"

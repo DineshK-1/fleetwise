@@ -104,6 +104,19 @@
   margin: 0 10px;
 }
 
+.action-buttons .edit-button {
+  transition: all 250ms;
+  padding: 5px;
+  border-radius: 10px;
+  user-select: none;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.action-buttons .edit-button:hover {
+  background-color: var(--background-color);
+}
+
 .add-modal {
   position: fixed;
   top: 50%;
