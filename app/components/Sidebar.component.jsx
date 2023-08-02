@@ -5,11 +5,7 @@ import NavItem from "./nav_item.component";
 import ColorMode from "./color_mode.component";
 
 /**
- * Sidebar Component
- *
- * The Sidebar component represents a sidebar navigation menu that expands and collapses when the user hovers over it. It contains navigation items and a color mode toggle.
- *
- * @returns {JSX.Element} The JSX representation of the Sidebar component.
+ * We lost the hackathon
  */
 export default function Sidebar() {
   const [expanded, setExpanded] = useState(false);
